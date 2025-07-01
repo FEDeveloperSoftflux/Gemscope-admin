@@ -1,42 +1,37 @@
-import { motion } from 'framer-motion';
+import { motion } from "framer-motion";
+import React from "react";
 
 const EarningsChart = () => {
   // Mock data for the chart
   const chartData = [
-    { month: 'Jan', value: 15000 },
-    { month: 'Feb', value: 25000 },
-    { month: 'Mar', value: 30000 },
-    { month: 'Apr', value: 28000 },
-    { month: 'May', value: 45000 },
-    { month: 'Jun', value: 65000 },
+    { month: "Jan", value: 15000 },
+    { month: "Feb", value: 25000 },
+    { month: "Mar", value: 30000 },
+    { month: "Apr", value: 28000 },
+    { month: "May", value: 45000 },
+    { month: "Jun", value: 65000 },
   ];
 
-  const maxValue = Math.max(...chartData.map(d => d.value));
+  const maxValue = Math.max(...chartData.map((d) => d.value));
 
   return (
     <motion.div
       initial={{ y: 20, opacity: 0 }}
       animate={{ y: 0, opacity: 1 }}
-      transition={{ duration: 0.3, delay: 0.1 }}
+      transition={{ duration: 0.3, delay: 0.3 }}
       className="chart-container"
     >
-      <div className="flex items-center justify-between mb-6">
-        <div>
-          <h3 className="text-xl font-semibold text-white mb-2">
-            Earnings Overview
-          </h3>
-          <div className="flex items-center gap-4">
+      <div className="flex items-center justify-between mb-4">
+          <div>
+            <h3 className="text-xl font-semibold text-white mb-2">
+              Earnings Overview
+            </h3>
             <span className="text-text-secondary text-sm">1 Month</span>
-            <div className="flex gap-1">
-              <button className="toggle-button">Monthly</button>
-              <button className="toggle-button active">Yearly</button>
-            </div>
           </div>
         </div>
-      </div>
 
       {/* Chart SVG */}
-      <div className="relative h-80">
+      <div className="relative h-64">
         <svg
           width="100%"
           height="100%"
@@ -45,11 +40,23 @@ const EarningsChart = () => {
         >
           {/* Chart gradient definitions */}
           <defs>
-            <linearGradient id="chartGradient" x1="0%" y1="0%" x2="100%" y2="0%">
+            <linearGradient
+              id="chartGradient"
+              x1="0%"
+              y1="0%"
+              x2="100%"
+              y2="0%"
+            >
               <stop offset="0%" stopColor="#8B5CF6" />
               <stop offset="100%" stopColor="#3B82F6" />
             </linearGradient>
-            <linearGradient id="chartAreaGradient" x1="0%" y1="0%" x2="0%" y2="100%">
+            <linearGradient
+              id="chartAreaGradient"
+              x1="0%"
+              y1="0%"
+              x2="0%"
+              y2="100%"
+            >
               <stop offset="0%" stopColor="#8B5CF6" stopOpacity="0.3" />
               <stop offset="100%" stopColor="#3B82F6" stopOpacity="0.1" />
             </linearGradient>
@@ -58,9 +65,12 @@ const EarningsChart = () => {
           {/* Chart area */}
           <path
             d={`M 0 ${300 - (chartData[0].value / maxValue) * 250} 
-                ${chartData.map((point, index) => 
-                  `L ${(index * 100)} ${300 - (point.value / maxValue) * 250}`
-                ).join(' ')} 
+                ${chartData
+                  .map(
+                    (point, index) =>
+                      `L ${index * 100} ${300 - (point.value / maxValue) * 250}`
+                  )
+                  .join(" ")} 
                 L ${(chartData.length - 1) * 100} 300 
                 L 0 300 Z`}
             fill="url(#chartAreaGradient)"
@@ -69,12 +79,15 @@ const EarningsChart = () => {
           {/* Chart line */}
           <path
             d={`M 0 ${300 - (chartData[0].value / maxValue) * 250} 
-                ${chartData.map((point, index) => 
-                  `L ${(index * 100)} ${300 - (point.value / maxValue) * 250}`
-                ).join(' ')}`}
+                ${chartData
+                  .map(
+                    (point, index) =>
+                      `L ${index * 100} ${300 - (point.value / maxValue) * 250}`
+                  )
+                  .join(" ")}`}
             className="chart-gradient-line"
             stroke="url(#chartGradient)"
-            strokeWidth="3"
+            strokeWidth="4"
             fill="none"
           />
 
@@ -123,10 +136,7 @@ const EarningsChart = () => {
         {/* X-axis labels */}
         <div className="absolute bottom-0 left-0 right-0 flex justify-between px-4">
           {chartData.map((point) => (
-            <span
-              key={point.month}
-              className="text-text-muted text-sm"
-            >
+            <span key={point.month} className="text-text-muted text-sm">
               {point.month}
             </span>
           ))}

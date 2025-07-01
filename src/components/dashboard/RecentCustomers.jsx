@@ -1,58 +1,63 @@
-import { motion } from 'framer-motion';
+import React from "react";
+import { motion } from "framer-motion";
 
 const RecentCustomers = () => {
   const customers = [
     {
       id: 1,
-      name: 'Asif Qureshi',
-      email: 'asif@gmail.com',
-      plan: 'Free Plan',
-      planType: 'free',
-      date: '11 Jan 2025'
+      name: "Asif Qureshi",
+      email: "asif@gmail.com",
+      plan: "Free Plan",
+      planType: "free",
+      date: "11 Jan 2025",
     },
     {
       id: 2,
-      name: 'Hina Sohail',
-      email: 'hina@example.com',
-      plan: 'Pro Plan',
-      planType: 'pro',
-      date: '11 Jan 2025'
+      name: "Hina Sohail",
+      email: "hina@example.com",
+      plan: "Pro Plan",
+      planType: "pro",
+      date: "11 Jan 2025",
     },
     {
       id: 3,
-      name: 'Faizan Shah',
-      email: 'faizan@gmail.com',
-      plan: 'Enterprise Plan',
-      planType: 'enterprise',
-      date: '11 Jan 2025'
+      name: "Faizan Shah",
+      email: "faizan@gmail.com",
+      plan: "Enterprise Plan",
+      planType: "enterprise",
+      date: "11 Jan 2025",
     },
     {
       id: 4,
-      name: 'Asif Qureshi',
-      email: 'asif@gmail.com',
-      plan: 'Lifetime Plan',
-      planType: 'lifetime',
-      date: '11 Jan 2025'
-    }
+      name: "Asif Qureshi",
+      email: "asif@gmail.com",
+      plan: "Lifetime Plan",
+      planType: "lifetime",
+      date: "11 Jan 2025",
+    },
   ];
 
   const getPlanPillClass = (planType) => {
     switch (planType) {
-      case 'free':
-        return 'pill-free';
-      case 'pro':
-        return 'pill-pro';
-      case 'enterprise':
-        return 'pill-enterprise';
-      case 'lifetime':
-        return 'pill-lifetime';
+      case "free":
+        return "pill-free";
+      case "pro":
+        return "pill-pro";
+      case "enterprise":
+        return "pill-enterprise";
+      case "lifetime":
+        return "pill-lifetime";
       default:
-        return 'pill-free';
+        return "pill-free";
     }
   };
 
   const getInitials = (name) => {
-    return name.split(' ').map(n => n[0]).join('').toUpperCase();
+    return name
+      .split(" ")
+      .map((n) => n[0])
+      .join("")
+      .toUpperCase();
   };
 
   return (
@@ -63,10 +68,13 @@ const RecentCustomers = () => {
       className="data-table"
     >
       <div className="flex items-center justify-between mb-6">
-        <h3 className="text-xl font-semibold text-white">
-          Recent Customers
-        </h3>
-        <button className="text-text-secondary hover:text-white transition-colors text-sm font-medium">
+        <h3 className="text-xl font-semibold text-white">Recent Customers</h3>
+        <button className="flex items-center gap-2 text-sm text-purple-400 hover:text-purple-300 transition-colors">
+          <img 
+            src="/src/assets/icons/view.svg" 
+            alt="View" 
+            className="w-4 h-4"
+          />
           View All
         </button>
       </div>
@@ -81,26 +89,18 @@ const RecentCustomers = () => {
             className="data-table-row"
           >
             <div className="flex items-center gap-4">
-              <div className="user-initials">
-                {getInitials(customer.name)}
-              </div>
+              <div className="user-initials">{getInitials(customer.name)}</div>
               <div>
-                <p className="font-semibold text-white">
-                  {customer.name}
-                </p>
-                <p className="text-sm text-text-secondary">
-                  {customer.email}
-                </p>
+                <p className="font-semibold text-white">{customer.name}</p>
+                <p className="text-sm text-text-secondary">{customer.email}</p>
               </div>
             </div>
 
             <div className="flex items-center gap-4">
               <span className={getPlanPillClass(customer.planType)}>
-                {customer.plan}
+                <span>{customer.plan}</span>
               </span>
-              <span className="text-sm text-text-muted">
-                {customer.date}
-              </span>
+              <span className="text-sm text-text-muted">{customer.date}</span>
             </div>
           </motion.div>
         ))}

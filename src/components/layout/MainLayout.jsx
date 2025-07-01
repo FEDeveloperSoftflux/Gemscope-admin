@@ -1,5 +1,6 @@
-import Sidebar from './Sidebar';
-import Header from './Header';
+import React from "react";
+import Sidebar from "./Sidebar";
+import Header from "./Header";
 
 const MainLayout = ({ children, pageTitle }) => {
   return (
@@ -7,9 +8,7 @@ const MainLayout = ({ children, pageTitle }) => {
       <Sidebar />
       <div className="main-content">
         <Header pageTitle={pageTitle} />
-        <main className="content-area">
-          {children}
-        </main>
+        <main className="content-area">{children}</main>
       </div>
     </div>
   );
