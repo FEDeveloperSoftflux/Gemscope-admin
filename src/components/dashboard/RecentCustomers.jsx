@@ -1,5 +1,7 @@
 import React from "react";
 import { motion } from "framer-motion";
+import viewIcon from "../../assets/icons/view.svg";
+import crownIcon from "../../assets/icons/crown.svg";
 
 const RecentCustomers = () => {
   const customers = [
@@ -69,9 +71,9 @@ const RecentCustomers = () => {
     >
       <div className="flex items-center justify-between mb-6">
         <h3 className="text-xl font-semibold text-white">Recent Customers</h3>
-        <button className="flex items-center gap-2 text-sm text-purple-400 hover:text-purple-300 transition-colors">
+        <button className="btn-view-all">
           <img 
-            src="/src/assets/icons/view.svg" 
+            src={viewIcon}
             alt="View" 
             className="w-4 h-4"
           />
@@ -97,9 +99,14 @@ const RecentCustomers = () => {
             </div>
 
             <div className="flex items-center gap-4">
-              <span className={getPlanPillClass(customer.planType)}>
-                <span>{customer.plan}</span>
-              </span>
+              <div className="flex items-center gap-2">
+                <span className={getPlanPillClass(customer.planType)}>
+                  <span>{customer.plan}</span>
+                </span>
+                {customer.planType === "lifetime" && (
+                  <img src={crownIcon} alt="Crown" className="w-4 h-4" />
+                )}
+              </div>
               <span className="text-sm text-text-muted">{customer.date}</span>
             </div>
           </motion.div>

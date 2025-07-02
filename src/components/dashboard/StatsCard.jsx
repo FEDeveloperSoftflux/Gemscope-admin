@@ -52,7 +52,9 @@ const StatsCard = ({
             <p className="text-text-secondary text-sm font-medium mb-1">
               {title}
             </p>
-            <h3 className="text-2xl text-white font-bold">{value}</h3>
+            <h3 className="text-stat-secondary text-white font-bold">
+              {value}
+            </h3>
           </div>
           {Icon && (
             <div className="w-12 h-12 bg-white/10 rounded-lg flex items-center justify-center">
@@ -65,8 +67,17 @@ const StatsCard = ({
           <p className="text-text-secondary text-sm">{subtitle}</p>
           {growth && (
             <div className="flex items-center gap-1">
-              <svg width="10" height="8" viewBox="0 0 10 8" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path d="M4.2 1.06667C4.6 0.533333 5.4 0.533333 5.8 1.06667L9.8 6.4C10.2944 7.05924 9.82405 8 9 8H1C0.175955 8 -0.294427 7.05924 0.2 6.4L4.2 1.06667Z" fill={getStatUpIconColor()}/>
+              <svg
+                width="10"
+                height="8"
+                viewBox="0 0 10 8"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M4.2 1.06667C4.6 0.533333 5.4 0.533333 5.8 1.06667L9.8 6.4C10.2944 7.05924 9.82405 8 9 8H1C0.175955 8 -0.294427 7.05924 0.2 6.4L4.2 1.06667Z"
+                  fill={getStatUpIconColor()}
+                />
               </svg>
               <span className={`text-sm font-medium ${getGrowthColor()}`}>
                 {growth}

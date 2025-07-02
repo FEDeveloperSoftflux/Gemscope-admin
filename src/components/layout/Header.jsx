@@ -2,13 +2,16 @@ import React from "react";
 import { motion } from "framer-motion";
 import { useLocation } from "react-router-dom";
 import { navigationItems, userProfile } from "../../utils/constants/navigation.jsx";
+import notificationIcon from "../../assets/icons/notification.svg";
+import dashboardIcon from "../../assets/icons/dashboard.svg";
+import UserDropdown from "../ui/UserDropdown";
 
 const Header = ({ pageTitle = "Dashboard" }) => {
   const location = useLocation();
   
   // Find the current page's icon
   const currentPage = navigationItems.find(item => item.path === location.pathname);
-  const currentIcon = currentPage?.iconPath || '/src/assets/icons/dashboard.svg';
+  const currentIcon = currentPage?.iconPath || dashboardIcon;
   
   return (
     <header className="header">
@@ -19,7 +22,7 @@ const Header = ({ pageTitle = "Dashboard" }) => {
             <img
               src={currentIcon}
               alt={pageTitle}
-              className="w-5 h-5"
+              className="w-5 h-5 opacity-50 grayscale"
             />
           </div>
           <h1 className="text-xl font-primary font-semibold text-white">
@@ -37,7 +40,7 @@ const Header = ({ pageTitle = "Dashboard" }) => {
         >
           <button className="w-10 h-10 rounded-lg flex items-center justify-center hover:bg-gray-700 transition-colors" style={{backgroundColor: '#202020'}}>
             <img
-              src="/src/assets/icons/notification.svg"
+              src={notificationIcon}
               alt="Notifications"
               className="w-5 h-5 text-gray-400"
             />
@@ -46,21 +49,8 @@ const Header = ({ pageTitle = "Dashboard" }) => {
           </button>
         </motion.div>
 
-        {/* User Profile */}
-        <motion.div
-          whileHover={{ scale: 1.02 }}
-          className="flex items-center gap-3 cursor-pointer"
-        >
-          <div className="flex flex-col items-end">
-            <p className="font-semibold text-white text-sm">{userProfile.name}</p>
-            <p className="text-xs text-gray-400">{userProfile.email}</p>
-          </div>
-          <img
-            src="https://img.freepik.com/free-photo/look-there-happy-attractive-young-man-with-stubble-posing-against-blank-blue-studio-wall_295783-4776.jpg"
-            alt={userProfile.name}
-            className="w-10 h-10 rounded-full border-2 border-gray-600"
-          />
-        </motion.div>
+        {/* User Profile Dropdown */}
+        <UserDropdown user={userProfile} />
       </div>
     </header>
   );

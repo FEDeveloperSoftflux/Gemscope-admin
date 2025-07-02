@@ -1,18 +1,121 @@
+import React, { useState } from "react";
 import { motion } from "framer-motion";
-import React from "react";
+import {
+  Chart as ChartJS,
+  CategoryScale,
+  LinearScale,
+  PointElement,
+  LineElement,
+  Title,
+  Tooltip,
+  Legend,
+  Filler,
+} from "chart.js";
+import { Line } from "react-chartjs-2";
+
+// Register Chart.js components
+ChartJS.register(
+  CategoryScale,
+  LinearScale,
+  PointElement,
+  LineElement,
+  Title,
+  Tooltip,
+  Legend,
+  Filler
+);
 
 const EarningsChart = () => {
-  // Mock data for the chart
-  const chartData = [
-    { month: "Jan", value: 15000 },
-    { month: "Feb", value: 25000 },
-    { month: "Mar", value: 30000 },
-    { month: "Apr", value: 28000 },
-    { month: "May", value: 45000 },
-    { month: "Jun", value: 65000 },
-  ];
+  const [timeRange, setTimeRange] = useState("1 Month");
 
-  const maxValue = Math.max(...chartData.map((d) => d.value));
+  const data = {
+    labels: ["Jan", "Feb", "Mar", "Apr", "May", "Jun"],
+    datasets: [
+      {
+        label: "Earnings",
+        data: [15000, 25000, 35000, 30000, 45000, 50000],
+        borderColor: "#8B5CF6",
+        backgroundColor: "rgba(139, 92, 246, 0.1)",
+        borderWidth: 3,
+        fill: true,
+        tension: 0.4,
+        pointBackgroundColor: "#8B5CF6",
+        pointBorderColor: "#ffffff",
+        pointBorderWidth: 2,
+        pointRadius: 6,
+        pointHoverRadius: 8,
+      },
+    ],
+  };
+
+  const options = {
+    responsive: true,
+    maintainAspectRatio: false,
+    plugins: {
+      legend: {
+        display: false,
+      },
+      tooltip: {
+        backgroundColor: "rgba(26, 26, 26, 0.9)",
+        titleColor: "#ffffff",
+        bodyColor: "#ffffff",
+        borderColor: "rgba(139, 92, 246, 0.5)",
+        borderWidth: 1,
+        cornerRadius: 8,
+        displayColors: false,
+        callbacks: {
+          label: function (context) {
+            return `$${context.parsed.y.toLocaleString()}`;
+          },
+        },
+      },
+    },
+    scales: {
+      x: {
+        border: {
+          display: false,
+        },
+        grid: {
+          display: false,
+        },
+        ticks: {
+          color: "#9CA3AF",
+          font: {
+            family: "Lato",
+            size: 12,
+          },
+        },
+      },
+      y: {
+        border: {
+          display: false,
+        },
+        grid: {
+          color: "rgba(156, 163, 175, 0.1)",
+          drawBorder: false,
+        },
+        ticks: {
+          color: "#9CA3AF",
+          font: {
+            family: "Lato",
+            size: 12,
+          },
+          callback: function (value) {
+            return "$" + value / 1000 + "k";
+          },
+        },
+      },
+    },
+    interaction: {
+      intersect: false,
+      mode: "index",
+    },
+    elements: {
+      point: {
+        hoverBackgroundColor: "#8B5CF6",
+      },
+    },
+  };
 
   return (
     <motion.div
@@ -22,134 +125,37 @@ const EarningsChart = () => {
       className="chart-container"
     >
       <div className="flex items-center justify-between mb-4">
-          <div>
-            <h3 className="text-xl font-semibold text-white mb-2">
-              Earnings Overview
-            </h3>
-            <span className="text-text-secondary text-sm">1 Month</span>
-          </div>
+        <div>
+          <h3 className="text-xl font-semibold text-white mb-2">
+            Earnings Overview
+          </h3>
         </div>
-
-      {/* Chart SVG */}
-      <div className="relative h-64">
-        <svg
-          width="100%"
-          height="100%"
-          className="overflow-visible"
-          viewBox="0 0 600 300"
-        >
-          {/* Chart gradient definitions */}
-          <defs>
-            <linearGradient
-              id="chartGradient"
-              x1="0%"
-              y1="0%"
-              x2="100%"
-              y2="0%"
-            >
-              <stop offset="0%" stopColor="#8B5CF6" />
-              <stop offset="100%" stopColor="#3B82F6" />
-            </linearGradient>
-            <linearGradient
-              id="chartAreaGradient"
-              x1="0%"
-              y1="0%"
-              x2="0%"
-              y2="100%"
-            >
-              <stop offset="0%" stopColor="#8B5CF6" stopOpacity="0.3" />
-              <stop offset="100%" stopColor="#3B82F6" stopOpacity="0.1" />
-            </linearGradient>
-          </defs>
-
-          {/* Chart area */}
-          <path
-            d={`M 0 ${300 - (chartData[0].value / maxValue) * 250} 
-                ${chartData
-                  .map(
-                    (point, index) =>
-                      `L ${index * 100} ${300 - (point.value / maxValue) * 250}`
-                  )
-                  .join(" ")} 
-                L ${(chartData.length - 1) * 100} 300 
-                L 0 300 Z`}
-            fill="url(#chartAreaGradient)"
-          />
-
-          {/* Chart line */}
-          <path
-            d={`M 0 ${300 - (chartData[0].value / maxValue) * 250} 
-                ${chartData
-                  .map(
-                    (point, index) =>
-                      `L ${index * 100} ${300 - (point.value / maxValue) * 250}`
-                  )
-                  .join(" ")}`}
-            className="chart-gradient-line"
-            stroke="url(#chartGradient)"
-            strokeWidth="4"
+        <div className="relative">
+          <select className="bg-gray-800 text-white px-3 py-1.5 rounded-lg text-sm border border-gray-600 focus:outline-none focus:border-purple-400 appearance-none pr-8">
+            <option value="1">1 Month</option>
+            <option value="3">3 Months</option>
+            <option value="6">6 Months</option>
+            <option value="12">1 Year</option>
+          </select>
+          <svg
+            className="w-4 h-4 absolute right-2 top-1/2 transform -translate-y-1/2 pointer-events-none text-gray-400"
             fill="none"
-          />
-
-          {/* Data points */}
-          {chartData.map((point, index) => (
-            <motion.circle
-              key={point.month}
-              initial={{ scale: 0 }}
-              animate={{ scale: 1 }}
-              transition={{ delay: 0.3 + index * 0.1 }}
-              cx={index * 100}
-              cy={300 - (point.value / maxValue) * 250}
-              r="6"
-              fill="url(#chartGradient)"
-              className="cursor-pointer hover:r-8 transition-all"
-            />
-          ))}
-
-          {/* Tooltip on hover point */}
-          <motion.g
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ delay: 0.8 }}
+            stroke="currentColor"
+            viewBox="0 0 24 24"
           >
-            <rect
-              x="220"
-              y="80"
-              width="80"
-              height="30"
-              rx="6"
-              fill="rgba(0, 0, 0, 0.8)"
-            />
-            <text
-              x="260"
-              y="100"
-              textAnchor="middle"
-              fill="white"
-              fontSize="12"
-              fontWeight="500"
-            >
-              $45,000
-            </text>
-          </motion.g>
-        </svg>
-
-        {/* X-axis labels */}
-        <div className="absolute bottom-0 left-0 right-0 flex justify-between px-4">
-          {chartData.map((point) => (
-            <span key={point.month} className="text-text-muted text-sm">
-              {point.month}
-            </span>
-          ))}
+            <path
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              strokeWidth="2"
+              d="M19 9l-7 7-7-7"
+            ></path>
+          </svg>
         </div>
+      </div>
 
-        {/* Y-axis labels */}
-        <div className="absolute left-0 top-0 bottom-0 flex flex-col justify-between py-4">
-          <span className="text-text-muted text-sm">$60,000</span>
-          <span className="text-text-muted text-sm">$45,000</span>
-          <span className="text-text-muted text-sm">$30,000</span>
-          <span className="text-text-muted text-sm">$15,000</span>
-          <span className="text-text-muted text-sm">$0</span>
-        </div>
+      {/* Chart.js Chart */}
+      <div className="relative h-64">
+        <Line data={data} options={options} />
       </div>
     </motion.div>
   );

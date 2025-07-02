@@ -1,10 +1,4 @@
 import { motion } from "framer-motion";
-import {
-  UsersIcon,
-  CurrencyDollarIcon,
-  UserPlusIcon,
-} from "@heroicons/react/24/outline";
-
 import MainLayout from "../components/layout/MainLayout";
 import StatsCard from "../components/dashboard/StatsCard";
 import EarningsChart from "../components/dashboard/EarningsChart";
@@ -12,22 +6,40 @@ import RecentCustomers from "../components/dashboard/RecentCustomers";
 import RecentAISearches from "../components/dashboard/RecentAISearches";
 import React from "react";
 
+// Import custom SVG icons
+import userIcon from "../assets/icons/user.svg";
+import statsIcon from "../assets/icons/stats.svg";
+import trendingIcon from "../assets/icons/trending.svg";
+
+// Custom icon components
+const UserIcon = () => (
+  <img src={userIcon} alt="Users" className="w-6 h-6" />
+);
+
+const StatsIcon = () => (
+  <img src={statsIcon} alt="Stats" className="w-6 h-6" />
+);
+
+const TrendingIcon = () => (
+  <img src={trendingIcon} alt="Trending" className="w-6 h-6" />
+);
+
 const Dashboard = () => {
   return (
     <MainLayout pageTitle="Dashboard">
-      <div className="space-y-4">
+      <motion.div
+        initial={{ y: -20, opacity: 0 }}
+        animate={{ y: 0, opacity: 1 }}
+        transition={{ duration: 0.3 }}
+        className="space-y-8"
+      >
         {/* Welcome Section */}
-        <motion.div
-          initial={{ y: -20, opacity: 0 }}
-          animate={{ y: 0, opacity: 1 }}
-          transition={{ duration: 0.3 }}
-          className="mb-4 flex items-center justify-between"
-        >
+        <div className="mb-8 flex items-center justify-between">
           <div>
-            <h2 className="text-hero text-white font-primary mb-2">
+            <h2 className="text-2xl font-semibold text-white mb-2 font-primary">
               Welcome back!
             </h2>
-            <p className="text-text-secondary">
+            <p className="text-gray-400">
               Here's what's happening with your platform today.
             </p>
           </div>
@@ -39,7 +51,7 @@ const Dashboard = () => {
               Yearly
             </button>
           </div>
-        </motion.div>
+        </div>
 
         {/* Statistics Cards */}
         <div className="dashboard-grid">
@@ -48,7 +60,7 @@ const Dashboard = () => {
             value="4,322"
             subtitle="Currently active platform users"
             growth="+12.5%"
-            icon={UsersIcon}
+            icon={UserIcon}
             type="default"
           />
 
@@ -57,7 +69,7 @@ const Dashboard = () => {
             value="$182,350"
             subtitle="+$6,750 vs last month"
             growth="+12.5%"
-            icon={CurrencyDollarIcon}
+            icon={TrendingIcon}
             type="earnings"
           />
 
@@ -66,7 +78,7 @@ const Dashboard = () => {
             value="87"
             subtitle="+87 vs last Week"
             growth="+12.5%"
-            icon={UserPlusIcon}
+            icon={StatsIcon}
             type="users"
           />
         </div>
@@ -81,7 +93,7 @@ const Dashboard = () => {
           <RecentCustomers />
           <RecentAISearches />
         </div>
-      </div>
+      </motion.div>
     </MainLayout>
   );
 };

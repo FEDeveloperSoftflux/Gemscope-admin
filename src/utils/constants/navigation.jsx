@@ -1,35 +1,43 @@
 import React from "react";
+import dashboardIcon from "../../assets/icons/dashboard.svg";
+import userIcon from "../../assets/icons/user.svg";
+import reportingIcon from "../../assets/icons/reporting.svg";
+import settingIcon from "../../assets/icons/setting.svg";
 
-// Custom icon components from assets
-const DashboardIcon = () => (
+// Custom icon components from assets with dynamic styling
+const DashboardIcon = ({ className, style }) => (
   <img
-    src="/src/assets/icons/dashboard.svg"
+    src={dashboardIcon}
     alt="Dashboard"
-    className="w-5 h-5"
+    className={`w-5 h-5 ${className || ''}`}
+    style={{ filter: style?.color === 'black' ? 'brightness(0)' : 'none', ...style }}
   />
 );
 
-const UserIcon = () => (
+const UserIcon = ({ className, style }) => (
   <img
-    src="/src/assets/icons/user.svg"
+    src={userIcon}
     alt="User Management"
-    className="w-5 h-5"
+    className={`w-5 h-5 ${className || ''}`}
+    style={{ filter: style?.color === 'black' ? 'brightness(0)' : 'none', ...style }}
   />
 );
 
-const ReportingIcon = () => (
+const ReportingIcon = ({ className, style }) => (
   <img
-    src="/src/assets/icons/reporting.svg"
+    src={reportingIcon}
     alt="Reporting"
-    className="w-5 h-5"
+    className={`w-5 h-5 ${className || ''}`}
+    style={{ filter: style?.color === 'black' ? 'brightness(0)' : 'none', ...style }}
   />
 );
 
-const SettingsIcon = () => (
+const SettingsIcon = ({ className, style }) => (
   <img 
-    src="/src/assets/icons/setting.svg" 
+    src={settingIcon} 
     alt="Settings" 
-    className="w-5 h-5" 
+    className={`w-5 h-5 ${className || ''}`}
+    style={{ filter: style?.color === 'black' ? 'brightness(0)' : 'none', ...style }}
   />
 );
 
@@ -38,7 +46,7 @@ export const navigationItems = [
     id: "dashboard",
     name: "Dashboard",
     icon: DashboardIcon,
-    iconPath: "/src/assets/icons/dashboard.svg",
+    iconPath: dashboardIcon,
     path: "/",
     active: true,
   },
@@ -46,7 +54,7 @@ export const navigationItems = [
     id: "user-management",
     name: "User Management",
     icon: UserIcon,
-    iconPath: "/src/assets/icons/user.svg",
+    iconPath: userIcon,
     path: "/users",
     active: false,
   },
@@ -54,7 +62,7 @@ export const navigationItems = [
     id: "reporting",
     name: "Reporting",
     icon: ReportingIcon,
-    iconPath: "/src/assets/icons/reporting.svg",
+    iconPath: reportingIcon,
     path: "/reporting",
     active: false,
   },
@@ -62,7 +70,7 @@ export const navigationItems = [
     id: "settings",
     name: "Settings",
     icon: SettingsIcon,
-    iconPath: "/src/assets/icons/setting.svg",
+    iconPath: settingIcon,
     path: "/settings",
     active: false,
   },

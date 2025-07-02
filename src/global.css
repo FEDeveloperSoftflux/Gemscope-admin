@@ -84,21 +84,29 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .text-hero {
-  font-size: 2.5rem;
+  font-size: 1.75rem;
   font-weight: 700;
   line-height: 1.2;
 }
 
 .text-stat-primary {
-  font-size: 3rem;
+  font-size: 3.5rem;
   font-weight: 700;
   line-height: 1.1;
 }
 
 .text-stat-secondary {
-  font-size: 2rem;
+  font-size: 2.5rem;
   font-weight: 600;
   line-height: 1.2;
+}
+
+.text-subtitle-subtle {
+  font-size: 0.875rem;
+  font-weight: 400;
+  line-height: 1.4;
+  color: var(--color-text-muted);
+  opacity: 0.7;
 }
 
 /* Component styles */
@@ -136,42 +144,67 @@ h1, h2, h3, h4, h5, h6 {
   
   /* Plan Pills */
   .pill-free {
-    @apply px-3 py-1 rounded-xl text-xs font-medium;
-    background: rgba(195, 35, 136, 0.2);
+    @apply px-3 py-1 rounded-xl text-xs font-medium relative;
+    background: rgba(0, 0, 0, 0.3);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(195, 35, 136, 0.2);
+    font-weight: 600;
+  }
+  
+  .pill-free span {
+    background: var(--gradient-plan-free);
     background-clip: text;
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
-    background-image: var(--gradient-plan-free);
     font-weight: 600;
   }
   
   .pill-pro {
-    @apply px-3 py-1 rounded-xl text-xs font-medium;
-    background: rgba(127, 0, 206, 0.2);
+    @apply px-3 py-1 rounded-xl text-xs font-medium relative;
+    background: rgba(0, 0, 0, 0.3);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(127, 0, 206, 0.2);
+    font-weight: 600;
+  }
+  
+  .pill-pro span {
+    background: var(--gradient-plan-pro);
     background-clip: text;
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
-    background-image: var(--gradient-plan-pro);
     font-weight: 600;
   }
   
   .pill-enterprise {
-    @apply px-3 py-1 rounded-xl text-xs font-medium;
-    background: rgba(8, 8, 255, 0.2);
+    @apply px-3 py-1 rounded-xl text-xs font-medium relative;
+    background: rgba(0, 0, 0, 0.3);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(8, 8, 255, 0.2);
+    font-weight: 600;
+  }
+  
+  .pill-enterprise span {
+    background: var(--gradient-plan-enterprise);
     background-clip: text;
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
-    background-image: var(--gradient-plan-enterprise);
     font-weight: 600;
   }
   
   .pill-lifetime {
-    @apply px-3 py-1 rounded-xl text-xs font-medium;
-    background: rgba(196, 165, 2, 0.2);
+    @apply px-3 py-1 rounded-xl text-xs font-medium relative;
+    background: rgba(0, 0, 0, 0.3);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(196, 165, 2, 0.2);
+    font-weight: 600;
+  }
+  
+  .pill-lifetime span {
+    background: var(--gradient-plan-lifetime);
     background-clip: text;
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
-    background-image: var(--gradient-plan-lifetime);
+    color: #000000;
     font-weight: 600;
   }
   
@@ -274,6 +307,9 @@ h1, h2, h3, h4, h5, h6 {
     background-image: url('./assets/images/sidebar-bg.png');
     background-size: cover;
     background-position: center;
+    border-radius: 0 24px 24px 0;
+    margin: 8px 0 8px 8px;
+    height: calc(100vh - 16px);
   }
   
   .sidebar::after {
@@ -282,9 +318,14 @@ h1, h2, h3, h4, h5, h6 {
     bottom: 0;
     left: 0;
     right: 0;
-    height: 60px;
-    background: radial-gradient(ellipse at center bottom, rgba(139, 92, 246, 0.3) 0%, transparent 70%);
-    border-radius: 0 0 50% 50%;
+    height: 80px;
+    background: linear-gradient(180deg, 
+      transparent 0%, 
+      rgba(139, 92, 246, 0.3) 40%, 
+      rgba(168, 85, 247, 0.5) 70%, 
+      rgba(255, 108, 251, 0.7) 100%);
+    border-radius: 0 0 24px 0;
+    z-index: 0;
   }
   
   .sidebar-nav-item {
@@ -336,19 +377,28 @@ h1, h2, h3, h4, h5, h6 {
   .main-content {
     @apply flex-1 flex flex-col h-screen;
     overflow: hidden;
+    margin: 8px 8px 8px 0;
+    border-radius: 24px 0 0 24px;
   }
   
   .header {
-    @apply flex items-center justify-between px-6 py-3 border-b border-gray-800;
+    @apply flex items-center justify-between px-8 py-4;
     background-color: var(--color-bg-dark);
-    height: 60px;
+    height: 72px;
     flex-shrink: 0;
+    border-radius: 24px 0 0 0;
   }
   
   .content-area {
-    @apply flex-1 px-6 py-4;
+    @apply flex-1;
     overflow-y: auto;
-    height: calc(100vh - 60px);
+    height: calc(100vh - 88px);
+    background-color: var(--color-bg-dark);
+  }
+  
+  .content-wrapper {
+    @apply px-8 py-6 h-full;
+    min-height: calc(100vh - 88px);
   }
   
   /* Dashboard Grid */
@@ -358,6 +408,18 @@ h1, h2, h3, h4, h5, h6 {
   
   .dashboard-section {
     @apply grid grid-cols-1 lg:grid-cols-2 gap-4;
+  }
+  
+  /* View All Button */
+  .btn-view-all {
+    @apply flex items-center gap-2 text-sm text-purple-400 hover:text-purple-300 transition-all duration-300 px-3 py-1.5 rounded-lg;
+    background: rgba(139, 92, 246, 0.1);
+    border: 1px solid rgba(139, 92, 246, 0.2);
+  }
+  
+  .btn-view-all:hover {
+    background: rgba(139, 92, 246, 0.15);
+    border-color: rgba(139, 92, 246, 0.3);
   }
   
   /* Utility Classes */

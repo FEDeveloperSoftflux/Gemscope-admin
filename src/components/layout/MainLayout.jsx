@@ -8,7 +8,11 @@ const MainLayout = ({ children, pageTitle }) => {
       <Sidebar />
       <div className="main-content">
         <Header pageTitle={pageTitle} />
-        <main className="content-area">{children}</main>
+        <main className="content-area">
+          <div className="content-wrapper">
+            {children}
+          </div>
+        </main>
       </div>
     </div>
   );
