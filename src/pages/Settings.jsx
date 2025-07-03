@@ -155,7 +155,7 @@ const Settings = () => {
               </p>
 
               <div className="space-y-6">
-                <div className="max-w-md">
+                <div>
                   <label className="block text-gray-400 text-sm font-medium mb-2">
                     Current Password
                   </label>
@@ -175,7 +175,7 @@ const Settings = () => {
                   </div>
                 </div>
 
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-2xl">
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                   <div>
                     <label className="block text-gray-400 text-sm font-medium mb-2">
                       New Password
@@ -217,7 +217,7 @@ const Settings = () => {
                   </div>
                 </div>
 
-                <div className="flex justify-end max-w-2xl mt-8">
+                <div className="flex justify-end mt-8">
                   <button className="btn-primary">
                     Update password
                   </button>

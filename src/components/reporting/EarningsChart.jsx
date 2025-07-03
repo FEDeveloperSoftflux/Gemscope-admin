@@ -1,5 +1,5 @@
-import React, { useState, useEffect } from 'react';
-import { motion } from 'framer-motion';
+import React, { useState, useEffect } from "react";
+import { motion } from "framer-motion";
 import {
   Chart as ChartJS,
   CategoryScale,
@@ -10,8 +10,8 @@ import {
   Tooltip,
   Legend,
   Filler,
-} from 'chart.js';
-import { Line } from 'react-chartjs-2';
+} from "chart.js";
+import { Line } from "react-chartjs-2";
 
 // Register Chart.js components
 ChartJS.register(
@@ -26,21 +26,21 @@ ChartJS.register(
 );
 
 const EarningsChart = () => {
-  const [timeRange, setTimeRange] = useState('1 Month');
+  const [timeRange, setTimeRange] = useState("1 Month");
 
   const data = {
-    labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun'],
+    labels: ["Jan", "Feb", "Mar", "Apr", "May", "Jun"],
     datasets: [
       {
-        label: 'Earnings',
+        label: "Earnings",
         data: [15000, 25000, 35000, 30000, 45000, 50000],
-        borderColor: '#8B5CF6',
-        backgroundColor: 'rgba(139, 92, 246, 0.1)',
+        borderColor: "#8B5CF6",
+        backgroundColor: "rgba(139, 92, 246, 0.1)",
         borderWidth: 3,
         fill: true,
         tension: 0.4,
-        pointBackgroundColor: '#8B5CF6',
-        pointBorderColor: '#ffffff',
+        pointBackgroundColor: "#8B5CF6",
+        pointBorderColor: "#ffffff",
         pointBorderWidth: 2,
         pointRadius: 6,
         pointHoverRadius: 8,
@@ -56,18 +56,18 @@ const EarningsChart = () => {
         display: false,
       },
       tooltip: {
-        backgroundColor: 'rgba(26, 26, 26, 0.9)',
-        titleColor: '#ffffff',
-        bodyColor: '#ffffff',
-        borderColor: 'rgba(139, 92, 246, 0.5)',
+        backgroundColor: "rgba(26, 26, 26, 0.9)",
+        titleColor: "#ffffff",
+        bodyColor: "#ffffff",
+        borderColor: "rgba(139, 92, 246, 0.5)",
         borderWidth: 1,
         cornerRadius: 8,
         displayColors: false,
         callbacks: {
-          label: function(context) {
+          label: function (context) {
             return `$${context.parsed.y.toLocaleString()}`;
-          }
-        }
+          },
+        },
       },
     },
     scales: {
@@ -79,9 +79,9 @@ const EarningsChart = () => {
           display: false,
         },
         ticks: {
-          color: '#9CA3AF',
+          color: "#9CA3AF",
           font: {
-            family: 'Lato',
+            family: "Lato",
             size: 12,
           },
         },
@@ -91,28 +91,28 @@ const EarningsChart = () => {
           display: false,
         },
         grid: {
-          color: 'rgba(156, 163, 175, 0.1)',
+          color: "rgba(156, 163, 175, 0.1)",
           drawBorder: false,
         },
         ticks: {
-          color: '#9CA3AF',
+          color: "#9CA3AF",
           font: {
-            family: 'Lato',
+            family: "Lato",
             size: 12,
           },
-          callback: function(value) {
-            return '$' + (value / 1000) + 'k';
+          callback: function (value) {
+            return "$" + value / 1000 + "k";
           },
         },
       },
     },
     interaction: {
       intersect: false,
-      mode: 'index',
+      mode: "index",
     },
     elements: {
       point: {
-        hoverBackgroundColor: '#8B5CF6',
+        hoverBackgroundColor: "#8B5CF6",
       },
     },
   };
@@ -140,7 +140,7 @@ const EarningsChart = () => {
         </select>
       </div>
 
-      <div style={{ height: '300px' }}>
+      <div style={{ height: "300px" }}>
         <Line data={data} options={options} />
       </div>
     </motion.div>

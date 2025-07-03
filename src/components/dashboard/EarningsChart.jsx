@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import {
   Chart as ChartJS,
@@ -121,40 +121,26 @@ const EarningsChart = () => {
     <motion.div
       initial={{ y: 20, opacity: 0 }}
       animate={{ y: 0, opacity: 1 }}
-      transition={{ duration: 0.3, delay: 0.3 }}
+      transition={{ duration: 0.5, delay: 0.2 }}
       className="chart-container"
     >
-      <div className="flex items-center justify-between mb-4">
-        <div>
-          <h3 className="text-xl font-semibold text-white mb-2">
-            Earnings Overview
-          </h3>
-        </div>
-        <div className="relative">
-          <select className="bg-gray-800 text-white px-3 py-1.5 rounded-lg text-sm border border-gray-600 focus:outline-none focus:border-purple-400 appearance-none pr-8">
-            <option value="1">1 Month</option>
-            <option value="3">3 Months</option>
-            <option value="6">6 Months</option>
-            <option value="12">1 Year</option>
-          </select>
-          <svg
-            className="w-4 h-4 absolute right-2 top-1/2 transform -translate-y-1/2 pointer-events-none text-gray-400"
-            fill="none"
-            stroke="currentColor"
-            viewBox="0 0 24 24"
-          >
-            <path
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              strokeWidth="2"
-              d="M19 9l-7 7-7-7"
-            ></path>
-          </svg>
-        </div>
+      <div className="flex items-center justify-between mb-6">
+        <h3 className="text-xl font-semibold text-white font-primary">
+          Earnings Overview
+        </h3>
+        <select
+          value={timeRange}
+          onChange={(e) => setTimeRange(e.target.value)}
+          className="bg-gray-800 text-white px-4 py-2 rounded-lg border border-gray-700 focus:border-purple-500 focus:outline-none text-sm"
+        >
+          <option>1 Month</option>
+          <option>3 Months</option>
+          <option>6 Months</option>
+          <option>1 Year</option>
+        </select>
       </div>
 
-      {/* Chart.js Chart */}
-      <div className="relative h-64">
+      <div style={{ height: "300px" }}>
         <Line data={data} options={options} />
       </div>
     </motion.div>
