@@ -307,7 +307,7 @@ h1, h2, h3, h4, h5, h6 {
     background-image: url('./assets/images/sidebar-bg.png');
     background-size: cover;
     background-position: center;
-    border-radius: 0 24px 24px 0;
+    border-radius: 0 24px 24px 24px;
     margin: 8px 0 8px 8px;
     height: calc(100vh - 16px);
   }
@@ -324,7 +324,7 @@ h1, h2, h3, h4, h5, h6 {
       rgba(139, 92, 246, 0.3) 40%, 
       rgba(168, 85, 247, 0.5) 70%, 
       rgba(255, 108, 251, 0.7) 100%);
-    border-radius: 0 0 24px 0;
+    border-radius: 0 0 24px 24px;
     z-index: 0;
   }
   
@@ -399,6 +399,7 @@ h1, h2, h3, h4, h5, h6 {
   .content-wrapper {
     @apply px-8 py-6 h-full;
     min-height: calc(100vh - 88px);
+    padding-bottom: 3rem;
   }
   
   /* Dashboard Grid */

@@ -9,8 +9,11 @@ const DashboardIcon = ({ className, style }) => (
   <img
     src={dashboardIcon}
     alt="Dashboard"
-    className={`w-5 h-5 ${className || ''}`}
-    style={{ filter: style?.color === 'black' ? 'brightness(0)' : 'none', ...style }}
+    className={`w-4 h-4 ${className || ""}`}
+    style={{
+      filter: style?.color === "black" ? "brightness(0)" : "none",
+      ...style,
+    }}
   />
 );
 
@@ -18,8 +21,11 @@ const UserIcon = ({ className, style }) => (
   <img
     src={userIcon}
     alt="User Management"
-    className={`w-5 h-5 ${className || ''}`}
-    style={{ filter: style?.color === 'black' ? 'brightness(0)' : 'none', ...style }}
+    className={`w-4 h-4 ${className || ""}`}
+    style={{
+      filter: style?.color === "black" ? "brightness(0)" : "none",
+      ...style,
+    }}
   />
 );
 
@@ -27,17 +33,23 @@ const ReportingIcon = ({ className, style }) => (
   <img
     src={reportingIcon}
     alt="Reporting"
-    className={`w-5 h-5 ${className || ''}`}
-    style={{ filter: style?.color === 'black' ? 'brightness(0)' : 'none', ...style }}
+    className={`w-4 h-4 ${className || ""}`}
+    style={{
+      filter: style?.color === "black" ? "brightness(0)" : "none",
+      ...style,
+    }}
   />
 );
 
 const SettingsIcon = ({ className, style }) => (
-  <img 
-    src={settingIcon} 
-    alt="Settings" 
-    className={`w-5 h-5 ${className || ''}`}
-    style={{ filter: style?.color === 'black' ? 'brightness(0)' : 'none', ...style }}
+  <img
+    src={settingIcon}
+    alt="Settings"
+    className={`w-4 h-4 ${className || ""}`}
+    style={{
+      filter: style?.color === "black" ? "brightness(0)" : "none",
+      ...style,
+    }}
   />
 );
 

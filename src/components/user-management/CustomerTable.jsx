@@ -152,10 +152,11 @@ const CustomerTable = () => {
         });
         break;
       case 'downgrade':
-        // For downgrade, we can reuse the upgrade modal with different title
-        setUpgradeModal({
+        // Show success modal directly for downgrade
+        setSuccessModal({
           isOpen: true,
-          user: user
+          title: 'Plan Downgraded!',
+          message: `${user.name}'s subscription has been downgraded successfully.`
         });
         break;
       default:
@@ -410,7 +411,7 @@ const CustomerTable = () => {
       </div>
 
       {/* Pagination */}
-      <div className="flex items-center justify-between mt-6 pt-4 border-t border-gray-800">
+      <div className="flex items-center justify-center mt-6 pt-4 border-t border-gray-800">
         <div className="flex items-center gap-2">
           <button className="p-2 text-gray-400 hover:text-white transition-colors">
             <ChevronLeftIcon className="w-5 h-5" />

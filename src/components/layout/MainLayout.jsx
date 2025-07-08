@@ -11,6 +11,7 @@ const MainLayout = ({ children, pageTitle }) => {
         <main className="content-area">
           <div className="content-wrapper">
             {children}
+            <div className="pb-16"></div>
           </div>
         </main>
       </div>

@@ -22,7 +22,7 @@ const Header = ({ pageTitle = "Dashboard" }) => {
             <img
               src={currentIcon}
               alt={pageTitle}
-              className="w-5 h-5 opacity-50 grayscale"
+              className="w-5 h-5"
             />
           </div>
           <h1 className="text-xl font-primary font-semibold text-white">
