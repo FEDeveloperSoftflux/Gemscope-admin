@@ -303,13 +303,12 @@ h1, h2, h3, h4, h5, h6 {
   /* Sidebar Components */
   .sidebar {
     @apply flex flex-col h-screen relative;
-    background-color: var(--color-panel-bg);
     background-image: url('./assets/images/sidebar-bg.png');
     background-size: cover;
     background-position: center;
     border-radius: 0 24px 24px 24px;
-    margin: 8px 0 8px 8px;
-    height: calc(100vh - 16px);
+    margin: 8px 0 24px 24px;
+    height: calc(100vh - 32px);
   }
   
   .sidebar::after {
