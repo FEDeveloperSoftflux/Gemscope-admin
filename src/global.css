@@ -313,7 +313,7 @@ h1, h2, h3, h4, h5, h6 {
     background-image: url('./assets/images/sidebar-bg.png');
     background-size: cover;
     background-position: center;
-    border-radius: 0 24px 24px 24px;
+    border-radius: 24px 24px 24px 24px;
     margin: 8px 0 8px 8px;
     height: calc(100vh - 16px);
   }
