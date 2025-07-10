@@ -4,31 +4,39 @@ import { Link, useLocation } from "react-router-dom";
 import { navigationItems, userProfile } from "../../utils/constants/navigation.jsx";
 import gemaiLogo from "../../assets/icons/Gemai.svg";
 
-const Sidebar = ({ open, onClose }) => {
+const Sidebar = ({ isOpen, onClose }) => {
   const location = useLocation();
 
   return (
     <motion.div
-      initial={false}
-      animate={{ x: open ? 0 : -250 }}
+      initial={{ x: -250 }}
+      animate={{ x: 0 }}
       transition={{ duration: 0.3 }}
-      className={`sidebar w-56 z-50   left-[15px] lg:relative lg:translate-x-0 transition-transform duration-300
-        ${open ? 'translate-x-0' : '-translate-x-full'}
-        lg:translate-x-0
-      `}
-      style={{ boxShadow: open ? '0 0 40px rgba(0,0,0,0.4)' : undefined }}
+      className={`sidebar w-56 z-50 lg:z-40 ${isOpen ? 'translate-x-0' : '-translate-x-full lg:translate-x-0'}`}
     >
       {/* Brand Logo */}
       <div className="p-6">
-        <div className="flex items-center gap-3">
-          <img
-            src={gemaiLogo}
-            alt="GemScope AI"
-            className="w-8 h-8"
-          />
-          <span className="text-xl font-primary font-bold text-white">
-            GemScope AI
-          </span>
+        <div className="flex items-center justify-between">
+          <div className="flex items-center gap-3">
+            <img
+              src={gemaiLogo}
+              alt="GemScope AI"
+              className="w-8 h-8"
+            />
+            <span className="text-xl font-primary font-bold text-white">
+              GemScope AI
+            </span>
+          </div>
+          
+          {/* Close button for mobile */}
+          <button
+            onClick={onClose}
+            className="lg:hidden p-2 rounded-lg hover:bg-gray-700 transition-colors"
+          >
+            <svg className="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+            </svg>
+          </button>
         </div>
       </div>
 
@@ -40,7 +48,7 @@ const Sidebar = ({ open, onClose }) => {
             const isActive = location.pathname === item.path;
             return (
               <li key={item.id}>
-                <Link to={item.path}>
+                <Link to={item.path} onClick={() => onClose()}>
                   <motion.div
                     whileHover={{ scale: 1.02, x: 5 }}
                     whileTap={{ scale: 0.98 }}

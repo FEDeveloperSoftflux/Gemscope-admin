@@ -244,7 +244,8 @@ const CustomerTable = () => {
       className="data-table"
     >
       {/* Controls Section */}
-      <div className="flex items-center justify-between mb-6 gap-4">
+      <div className="mb-6 space-y-4">
+        {/* First Row - Search and Select All */}
         <div className="flex items-center gap-4">
           {/* Search Input */}
           <div className="relative">
@@ -270,59 +271,61 @@ const CustomerTable = () => {
           </label>
         </div>
 
-        {/* Right Controls */}
-        <div className="flex items-center gap-3">
-          {/* Delete Button - shown when items are selected */}
-          {(selectAll || selectedRows.length > 0) && (
-            <motion.button
-              initial={{ opacity: 0, scale: 0.8 }}
-              animate={{ opacity: 1, scale: 1 }}
-              exit={{ opacity: 0, scale: 0.8 }}
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
-              className="flex items-center gap-2 px-4 py-2 bg-red-600/20 border border-red-600/30 text-red-400 rounded-lg hover:bg-red-600/30 transition-colors"
-              onClick={() => {
-                setConfirmationModal({
-                  isOpen: true,
-                  title: 'Delete Selected Users',
-                  message: `Are you sure you want to delete ${selectedRows.length} selected user(s)?`,
-                  onConfirm: () => {
-                    console.log('Deleting selected users:', selectedRows);
-                    setSelectedRows([]);
-                    setSelectAll(false);
-                    setSuccessModal({
-                      isOpen: true,
-                      title: 'Users Deleted',
-                      message: `${selectedRows.length} user(s) have been deleted successfully.`
-                    });
-                  }
-                });
-              }}
-            >
-              <TrashIcon className="w-4 h-4" />
-              Delete ({selectedRows.length})
-            </motion.button>
-          )}
+        {/* Second Row - Action Buttons */}
+        <div className="flex items-center justify-between gap-3">
+          <div className="flex items-center gap-3">
+            {/* Delete Button - shown when items are selected */}
+            {(selectAll || selectedRows.length > 0) && (
+              <motion.button
+                initial={{ opacity: 0, scale: 0.8 }}
+                animate={{ opacity: 1, scale: 1 }}
+                exit={{ opacity: 0, scale: 0.8 }}
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+                className="flex items-center gap-2 px-4 py-2 bg-red-600/20 border border-red-600/30 text-red-400 rounded-lg hover:bg-red-600/30 transition-colors"
+                onClick={() => {
+                  setConfirmationModal({
+                    isOpen: true,
+                    title: 'Delete Selected Users',
+                    message: `Are you sure you want to delete ${selectedRows.length} selected user(s)?`,
+                    onConfirm: () => {
+                      console.log('Deleting selected users:', selectedRows);
+                      setSelectedRows([]);
+                      setSelectAll(false);
+                      setSuccessModal({
+                        isOpen: true,
+                        title: 'Users Deleted',
+                        message: `${selectedRows.length} user(s) have been deleted successfully.`
+                      });
+                    }
+                  });
+                }}
+              >
+                <TrashIcon className="w-4 h-4" />
+                Delete ({selectedRows.length})
+              </motion.button>
+            )}
 
-          {/* Status Filter */}
-          <select
-            value={statusFilter}
-            onChange={(e) => setStatusFilter(e.target.value)}
-            className="bg-black text-white px-4 py-2 rounded-lg border border-gray-600 focus:border-white focus:outline-none"
-          >
-            <option>All Status</option>
-            <option>Active</option>
-            <option>Cancelled</option>
-          </select>
+            {/* Status Filter */}
+            <select
+              value={statusFilter}
+              onChange={(e) => setStatusFilter(e.target.value)}
+              className="bg-gray-800/50 text-white px-4 py-2 rounded-lg border border-gray-600/50 focus:border-purple-500 focus:outline-none hover:bg-gray-700/50 transition-all duration-200 cursor-pointer min-w-[120px]"
+            >
+              <option className="bg-gray-800 text-white">All Status</option>
+              <option className="bg-gray-800 text-white">Active</option>
+              <option className="bg-gray-800 text-white">Cancelled</option>
+            </select>
+          </div>
 
           {/* Add User Button */}
           <motion.button 
             onClick={() => setIsAddUserModalOpen(true)}
-            className="btn-primary flex items-center gap-2"
-            whileHover={{ scale: 1.02 }}
+            className="btn-primary flex items-center gap-2 shadow-lg hover:shadow-xl"
+            whileHover={{ scale: 1.02, y: -2 }}
             whileTap={{ scale: 0.98 }}
           >
-            <img src={addIcon} alt="Add" className="w-5 h-5" />
+            <img src={addIcon} alt="Add" className="w-5 h-5 filter brightness-0" />
             Add User
           </motion.button>
         </div>

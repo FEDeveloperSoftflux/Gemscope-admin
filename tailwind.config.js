@@ -5,7 +5,94 @@ export default {
     "./src/**/*.{js,ts,jsx,tsx}",
   ],
   theme: {
+    // Complete responsive breakpoint system starting from 375px
+    screens: {
+      'xs': '375px',     // Extra small devices (small phones)
+      'sm': '480px',     // Small devices (adjusted smaller)
+      'md': '768px',     // Medium devices (tablets)
+      'lg': '1024px',    // Large devices (laptops)
+      'xl': '1280px',    // Extra large devices (desktops)
+      '2xl': '1536px',   // 2X large devices (large desktops)
+      '3xl': '1920px',   // 3X large devices (FHD monitors)
+      '4xl': '2560px',   // 4X large devices (QHD/4K monitors)
+      '5xl': '3440px',   // 5X large devices (ultra-wide monitors)
+      '6xl': '3840px',   // 6X large devices (4K ultra-wide)
+      '7xl': '5120px',   // 7X large devices (5K displays)
+      // Custom utility breakpoints
+      'portrait': {'raw': '(orientation: portrait)'},
+      'landscape': {'raw': '(orientation: landscape)'},
+      'tall': {'raw': '(min-height: 800px)'},
+      'short': {'raw': '(max-height: 600px)'},
+      'touch': {'raw': '(hover: none)'},
+      'mouse': {'raw': '(hover: hover)'},
+    },
     extend: {
+      // Custom container widths for precise responsive control
+      width: {
+        'xs': '20rem',    // 320px
+        'sm': '24rem',    // 384px
+        'md': '28rem',    // 448px
+        'lg': '32rem',    // 512px
+        'xl': '36rem',    // 576px
+        '2xl': '42rem',   // 672px
+        '3xl': '48rem',   // 768px
+        '4xl': '56rem',   // 896px
+        '5xl': '64rem',   // 1024px
+        '6xl': '72rem',   // 1152px
+        '7xl': '80rem',   // 1280px
+      },
+      // Maximum width utilities
+      maxWidth: {
+        'xs': '20rem',    // 320px
+        'sm': '24rem',    // 384px
+        'md': '28rem',    // 448px
+        'lg': '32rem',    // 512px
+        'xl': '36rem',    // 576px
+        '2xl': '42rem',   // 672px
+        '3xl': '48rem',   // 768px
+        '4xl': '56rem',   // 896px
+        '5xl': '64rem',   // 1024px
+        '6xl': '72rem',   // 1152px
+        '7xl': '80rem',   // 1280px
+      },
+      // Minimum width utilities
+      minWidth: {
+        'xs': '20rem',    // 320px
+        'sm': '24rem',    // 384px
+        'md': '28rem',    // 448px
+        'lg': '32rem',    // 512px
+        'xl': '36rem',    // 576px
+        '2xl': '42rem',   // 672px
+        '3xl': '48rem',   // 768px
+        '4xl': '56rem',   // 896px
+        '5xl': '64rem',   // 1024px
+        '6xl': '72rem',   // 1152px
+        '7xl': '80rem',   // 1280px
+      },
+      // Enhanced spacing system
+      spacing: {
+        '18': '4.5rem',   // 72px
+        '22': '5.5rem',   // 88px
+        '26': '6.5rem',   // 104px
+        '30': '7.5rem',   // 120px
+        '34': '8.5rem',   // 136px
+        '38': '9.5rem',   // 152px
+        '42': '10.5rem',  // 168px
+        '46': '11.5rem',  // 184px
+        '50': '12.5rem',  // 200px
+        '54': '13.5rem',  // 216px
+        '58': '14.5rem',  // 232px
+        '62': '15.5rem',  // 248px
+        '66': '16.5rem',  // 264px
+        '70': '17.5rem',  // 280px
+        '74': '18.5rem',  // 296px
+        '78': '19.5rem',  // 312px
+        '82': '20.5rem',  // 328px
+        '86': '21.5rem',  // 344px
+        '90': '22.5rem',  // 360px
+        '94': '23.5rem',  // 376px
+        '98': '24.5rem',  // 392px
+      },
       fontFamily: {
         'primary': ['"Schibsted Grotesk"', 'sans-serif'],
         'secondary': ['Lato', 'sans-serif'],

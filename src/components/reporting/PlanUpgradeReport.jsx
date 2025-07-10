@@ -66,13 +66,14 @@ const PlanUpgradeReport = () => {
       transition={{ duration: 0.5, delay: 0.4 }}
       className="chart-container"
     >
-      <div className="flex items-center justify-between mb-6">
-        <h3 className="text-xl font-semibold text-white font-primary">
+      <div className="flex items-center justify-between mb-4 sm:mb-6">
+        <h3 className="text-lg sm:text-xl font-semibold text-white font-primary">
           Plan Upgrade Report
         </h3>
-        <button className="flex items-center gap-2 px-4 py-2 bg-gray-700 hover:bg-gray-600 text-white rounded-lg transition-colors text-sm">
-          <EyeIcon className="w-4 h-4" />
-          Show All
+        <button className="flex items-center gap-1 sm:gap-2 px-2 sm:px-4 py-1.5 sm:py-2 bg-gray-700 hover:bg-gray-600 text-white rounded-lg transition-colors text-xs sm:text-sm">
+          <EyeIcon className="w-3 h-3 sm:w-4 sm:h-4" />
+          <span className="hidden sm:inline">Show All</span>
+          <span className="sm:hidden">All</span>
         </button>
       </div>
 
@@ -83,33 +84,33 @@ const PlanUpgradeReport = () => {
             initial={{ opacity: 0, x: -20 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ delay: index * 0.1 }}
-            className="flex items-center justify-between p-4 bg-gray-800/50 rounded-lg border border-gray-700/50 hover:bg-gray-800/70 transition-colors"
+            className="flex flex-col sm:flex-row sm:items-center sm:justify-between p-3 sm:p-4 bg-gray-800/50 rounded-lg border border-gray-700/50 hover:bg-gray-800/70 transition-colors gap-3 sm:gap-4"
           >
-            <div className="flex items-center gap-4">
-              <div className="w-10 h-10 bg-gradient-to-r from-purple-500 to-blue-500 rounded-lg flex items-center justify-center text-white font-semibold text-sm">
+            <div className="flex items-center gap-3">
+              <div className="w-8 h-8 sm:w-10 sm:h-10 bg-gradient-to-r from-purple-500 to-blue-500 rounded-lg flex items-center justify-center text-white font-semibold text-xs sm:text-sm">
                 {upgrade.initials}
               </div>
               
-              <div>
-                <div className="text-white font-medium">{upgrade.name}</div>
-                <div className="text-gray-400 text-sm">{upgrade.email}</div>
+              <div className="min-w-0 flex-1">
+                <div className="text-white font-medium text-sm sm:text-base truncate">{upgrade.name}</div>
+                <div className="text-gray-400 text-xs sm:text-sm truncate">{upgrade.email}</div>
               </div>
             </div>
 
-            <div className="flex items-center gap-4">
-              <div className="flex items-center gap-2">
-                <span className={getPlanPillClass(upgrade.fromPlan)}>
+            <div className="flex flex-col sm:flex-row sm:items-center gap-2 sm:gap-4">
+              <div className="flex items-center gap-1 sm:gap-2 overflow-x-auto">
+                <span className={`${getPlanPillClass(upgrade.fromPlan)} text-xs`}>
                   <span>{upgrade.fromPlan}</span>
                 </span>
                 
-                <ArrowRightIcon className="w-4 h-4 text-gray-400" />
+                <ArrowRightIcon className="w-3 h-3 sm:w-4 sm:h-4 text-gray-400 flex-shrink-0" />
                 
-                <span className={getPlanPillClass(upgrade.toPlan)}>
+                <span className={`${getPlanPillClass(upgrade.toPlan)} text-xs`}>
                   <span>{upgrade.toPlan}</span>
                 </span>
               </div>
 
-              <div className="text-gray-400 text-sm min-w-0">
+              <div className="text-gray-400 text-xs sm:text-sm">
                 {upgrade.date}
               </div>
             </div>

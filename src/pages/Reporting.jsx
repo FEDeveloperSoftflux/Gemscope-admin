@@ -41,11 +41,11 @@ const Reporting = () => {
         className="space-y-8"
       >
         {/* Header Section */}
-        <div className="mb-8">
-          <h2 className="text-2xl font-semibold text-white mb-2 font-primary">
+        <div className="mb-6 sm:mb-8">
+          <h2 className="text-xl sm:text-2xl font-semibold text-white mb-2 font-primary">
             Reporting Panel
           </h2>
-          <p className="text-gray-400">
+          <p className="text-gray-400 text-sm sm:text-base">
             Track your income and analyse your financial performance
           </p>
         </div>
@@ -81,59 +81,79 @@ const Reporting = () => {
         </div>
 
         {/* Controls Section */}
-        <div className="flex items-center justify-between gap-4 flex-wrap">
-          <div className="flex items-center gap-4">
-            {/* Filter Dropdowns */}
-            <select className="bg-gray-800 text-white px-4 py-2 rounded-lg border border-gray-700 focus:border-purple-500 focus:outline-none">
-              <option>All Clients</option>
-              <option>Active Clients</option>
-              <option>Inactive Clients</option>
-            </select>
+        <div className="mb-6 space-y-4">
+          {/* First Row - Filter Dropdowns and Export Buttons */}
+          <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
+            <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-2 sm:gap-4">
+              {/* Filter Dropdowns */}
+              <select className="bg-gray-800/50 text-white px-3 sm:px-4 py-2 rounded-lg border border-gray-600/50 focus:border-purple-500 focus:outline-none hover:bg-gray-700/50 transition-all duration-200 cursor-pointer text-sm">
+                <option className="bg-gray-800 text-white">All Clients</option>
+                <option className="bg-gray-800 text-white">Active Clients</option>
+                <option className="bg-gray-800 text-white">Inactive Clients</option>
+              </select>
 
-            <select className="bg-gray-800 text-white px-4 py-2 rounded-lg border border-gray-700 focus:border-purple-500 focus:outline-none">
-              <option>All Plans</option>
-              <option>Free</option>
-              <option>Pro</option>
-              <option>Enterprise</option>
-              <option>Lifetime</option>
-            </select>
+              <select className="bg-gray-800/50 text-white px-3 sm:px-4 py-2 rounded-lg border border-gray-600/50 focus:border-purple-500 focus:outline-none hover:bg-gray-700/50 transition-all duration-200 cursor-pointer text-sm">
+                <option className="bg-gray-800 text-white">All Plans</option>
+                <option className="bg-gray-800 text-white">Free</option>
+                <option className="bg-gray-800 text-white">Pro</option>
+                <option className="bg-gray-800 text-white">Enterprise</option>
+                <option className="bg-gray-800 text-white">Lifetime</option>
+              </select>
+            </div>
 
-            {/* Date Filters */}
-            <div className="flex items-center gap-2">
-              <div className="relative">
-                <input
-                  type="text"
-                  placeholder="From Date"
-                  className="bg-gray-800 text-white px-4 py-2 pl-10 rounded-lg border border-gray-700 focus:border-purple-500 focus:outline-none w-32"
-                />
-                <CalendarIcon className="w-4 h-4 absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400" />
-              </div>
+            {/* Export Buttons */}
+            <div className="flex items-center gap-2 sm:gap-3">
+              <motion.button
+                onClick={() => setExportModalOpen(true)}
+                className="flex items-center gap-1 sm:gap-2 px-3 sm:px-4 py-2 bg-gray-800/50 hover:bg-gray-700/50 text-white rounded-lg border border-gray-600/50 hover:border-gray-500/50 transition-all duration-200 text-xs sm:text-sm"
+                whileHover={{ scale: 1.02 }}
+                whileTap={{ scale: 0.98 }}
+              >
+                <DocumentArrowDownIcon className="w-3 h-3 sm:w-4 sm:h-4" />
+                <span className="hidden sm:inline">Export CSV</span>
+                <span className="sm:hidden">CSV</span>
+              </motion.button>
 
-              <div className="relative">
-                <input
-                  type="text"
-                  placeholder="To Date"
-                  className="bg-gray-800 text-white px-4 py-2 pl-10 rounded-lg border border-gray-700 focus:border-purple-500 focus:outline-none w-32"
-                />
-                <CalendarIcon className="w-4 h-4 absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400" />
-              </div>
+              <motion.button 
+                className="flex items-center gap-1 sm:gap-2 px-3 sm:px-4 py-2 bg-gray-800/50 hover:bg-gray-700/50 text-white rounded-lg border border-gray-600/50 hover:border-gray-500/50 transition-all duration-200 text-xs sm:text-sm"
+                whileHover={{ scale: 1.02 }}
+                whileTap={{ scale: 0.98 }}
+              >
+                <DocumentArrowDownIcon className="w-3 h-3 sm:w-4 sm:h-4" />
+                <span className="hidden sm:inline">Export PDF</span>
+                <span className="sm:hidden">PDF</span>
+              </motion.button>
             </div>
           </div>
 
-          {/* Export Buttons */}
-          <div className="flex items-center gap-3">
-            <button
-              onClick={() => setExportModalOpen(true)}
-              className="flex items-center gap-2 px-4 py-2 bg-gray-700 hover:bg-gray-600 text-white rounded-lg transition-colors"
-            >
-              <DocumentArrowDownIcon className="w-4 h-4" />
-              Export CSV
-            </button>
+          {/* Second Row - Date Filters */}
+          <div className="flex flex-col sm:flex-row sm:items-center gap-3 sm:gap-4">
+            <span className="text-gray-400 text-sm font-medium">Date Range:</span>
+            <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-2">
+              <div className="relative">
+                <input
+                  type="date"
+                  className="bg-gray-800/50 text-white px-3 sm:px-4 py-2 pl-8 sm:pl-10 rounded-lg border border-gray-600/50 focus:border-purple-500 focus:outline-none hover:bg-gray-700/50 transition-all duration-200 w-full sm:w-36 text-sm [color-scheme:dark]"
+                  style={{
+                    colorScheme: 'dark'
+                  }}
+                />
+                <CalendarIcon className="w-3 h-3 sm:w-4 sm:h-4 absolute left-2 sm:left-3 top-1/2 transform -translate-y-1/2 text-gray-400 pointer-events-none" />
+              </div>
 
-            <button className="flex items-center gap-2 px-4 py-2 bg-gray-700 hover:bg-gray-600 text-white rounded-lg transition-colors">
-              <DocumentArrowDownIcon className="w-4 h-4" />
-              Export PDF
-            </button>
+              <span className="text-gray-400 text-center sm:text-left text-sm">to</span>
+
+              <div className="relative">
+                <input
+                  type="date"
+                  className="bg-gray-800/50 text-white px-3 sm:px-4 py-2 pl-8 sm:pl-10 rounded-lg border border-gray-600/50 focus:border-purple-500 focus:outline-none hover:bg-gray-700/50 transition-all duration-200 w-full sm:w-36 text-sm [color-scheme:dark]"
+                  style={{
+                    colorScheme: 'dark'
+                  }}
+                />
+                <CalendarIcon className="w-3 h-3 sm:w-4 sm:h-4 absolute left-2 sm:left-3 top-1/2 transform -translate-y-1/2 text-gray-400 pointer-events-none" />
+              </div>
+            </div>
           </div>
         </div>
 

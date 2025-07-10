@@ -31,23 +31,23 @@ const Dashboard = () => {
         initial={{ y: -20, opacity: 0 }}
         animate={{ y: 0, opacity: 1 }}
         transition={{ duration: 0.3 }}
-        className="space-y-8"
+        className="space-y-6"
       >
         {/* Welcome Section */}
-        <div className="mb-8 flex items-center justify-between">
+        <div className="mb-4 sm:mb-6 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
           <div>
-            <h2 className="text-2xl font-semibold text-white mb-2 font-primary">
+            <h2 className="text-xl sm:text-2xl font-semibold text-white mb-2 font-primary">
               Welcome back!
             </h2>
-            <p className="text-gray-400">
+            <p className="text-gray-400 text-sm sm:text-base">
               Here's what's happening with your platform today.
             </p>
           </div>
           <div className="flex gap-2">
-            <button className="toggle-button active text-xs px-3 py-1.5">
+            <button className="toggle-button active text-xs px-2 sm:px-3 py-1 sm:py-1.5">
               Monthly
             </button>
-            <button className="toggle-button text-xs px-3 py-1.5 font-medium">
+            <button className="toggle-button text-xs px-2 sm:px-3 py-1 sm:py-1.5 font-medium">
               Yearly
             </button>
           </div>
@@ -84,7 +84,7 @@ const Dashboard = () => {
         </div>
 
         {/* Chart Section */}
-        <div className="mb-4">
+        <div className="mb-6">
           <EarningsChart />
         </div>
 
