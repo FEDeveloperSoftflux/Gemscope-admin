@@ -308,7 +308,9 @@ h1, h2, h3, h4, h5, h6 {
     background-position: center;
     border-radius: 0 24px 24px 24px;
     margin: 8px 0 24px 24px;
-    height: calc(100vh - 32px);
+    height: calc(100vh - 20px);
+    transition: transform 0.3s cubic-bezier(0.4,0,0.2,1);
+    z-index: 50;
   }
   
   .sidebar::after {
@@ -545,6 +547,26 @@ h1, h2, h3, h4, h5, h6 {
     
     .content-area {
       @apply p-4;
+    }
+  }
+
+  @media (max-width: 1024px) {
+    .sidebar {
+      @apply fixed top-0 left-0 h-full w-56 z-50 m-0;
+      border-radius: 0 24px 24px 24px;
+      transform: translateX(-100%);
+    }
+    .sidebar.translate-x-0 {
+      transform: translateX(0) !important;
+    }
+    .sidebar.-translate-x-full {
+      transform: translateX(-100%) !important;
+    }
+  }
+  @media (min-width: 1024px) {
+    .sidebar {
+      @apply relative m-0;
+      transform: none !important;
     }
   }
 }

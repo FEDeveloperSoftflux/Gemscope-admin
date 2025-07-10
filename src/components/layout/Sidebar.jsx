@@ -4,15 +4,19 @@ import { Link, useLocation } from "react-router-dom";
 import { navigationItems, userProfile } from "../../utils/constants/navigation.jsx";
 import gemaiLogo from "../../assets/icons/Gemai.svg";
 
-const Sidebar = () => {
+const Sidebar = ({ open, onClose }) => {
   const location = useLocation();
 
   return (
     <motion.div
-      initial={{ x: -250 }}
-      animate={{ x: 0 }}
+      initial={false}
+      animate={{ x: open ? 0 : -250 }}
       transition={{ duration: 0.3 }}
-      className="sidebar w-56 z-40"
+      className={`sidebar w-56 z-50   left-[15px] lg:relative lg:translate-x-0 transition-transform duration-300
+        ${open ? 'translate-x-0' : '-translate-x-full'}
+        lg:translate-x-0
+      `}
+      style={{ boxShadow: open ? '0 0 40px rgba(0,0,0,0.4)' : undefined }}
     >
       {/* Brand Logo */}
       <div className="p-6">
