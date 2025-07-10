@@ -306,8 +306,8 @@ h1, h2, h3, h4, h5, h6 {
     background-image: url('./assets/images/sidebar-bg.png');
     background-size: cover;
     background-position: center;
-    border-radius: 0 24px 24px 24px;
-    margin: 8px 0 24px 24px;
+    border-radius: 24px;
+    margin: 24px 0 24px 0;
     height: calc(100vh - 20px);
     transition: transform 0.3s cubic-bezier(0.4,0,0.2,1);
     z-index: 50;
