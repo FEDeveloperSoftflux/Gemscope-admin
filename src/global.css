@@ -113,7 +113,7 @@ h1, h2, h3, h4, h5, h6 {
 @layer components {
   /* Button Components */
   .btn-primary {
-    @apply px-6 py-3 rounded-lg font-semibold text-black transition-all duration-300 hover:-translate-y-1;
+    @apply px-4 py-2 rounded-lg font-semibold text-black transition-all duration-300 hover:-translate-y-1;
     background: var(--gradient-btn-primary);
     box-shadow: var(--shadow-card);
   }
@@ -126,21 +126,21 @@ h1, h2, h3, h4, h5, h6 {
     @apply px-6 py-3 rounded-lg font-semibold text-white border border-gray-600 transition-all duration-300 hover:bg-gray-700;
     background-color: var(--color-card-alt-bg);
   }
-  
   /* Toggle Buttons */
-  .toggle-button {
-    @apply px-3 py-1.5 rounded-full text-xs font-medium transition-all duration-300;
-    background-color: var(--color-card-alt-bg);
-    color: var(--color-text-secondary);
-    border: 1px solid rgba(255, 255, 255, 0.1);
-  }
-  
-  .toggle-button.active {
-    background: var(--gradient-btn-primary);
-    color: #000000;
-    border: none;
-    font-weight: 600;
-  }
+.toggle-button {
+  @apply w-20 h-9 rounded-lg text-xs font-medium transition-all duration-300;
+  color: var(--color-text-secondary);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.toggle-button.active {
+  background: var(--gradient-btn-primary);
+  color: #000000;
+  border: none;
+}
   
   /* Plan Pills */
   .pill-free {
@@ -467,14 +467,14 @@ h1, h2, h3, h4, h5, h6 {
   
   /* View All Button */
   .btn-view-all {
-    @apply flex items-center gap-2 text-sm text-purple-400 hover:text-purple-300 transition-all duration-300 px-3 py-1.5 rounded-lg;
-    background: rgba(139, 92, 246, 0.1);
-    border: 1px solid rgba(139, 92, 246, 0.2);
+    @apply flex items-center gap-2 text-sm bg-black transition-all duration-300 px-3 py-2 rounded-lg;
+    background: #00000;
   }
   
-  .btn-view-all:hover {
-    background: rgba(139, 92, 246, 0.15);
-    border-color: rgba(139, 92, 246, 0.3);
+  @media (max-width: 479px) {
+    .btn-view-all {
+      white-space: nowrap;
+    }
   }
   
   /* Utility Classes */

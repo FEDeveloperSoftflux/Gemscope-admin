@@ -50,7 +50,7 @@ const UserDropdown = ({ user, smallAvatar }) => {
           <img
             src="https://img.freepik.com/free-photo/look-there-happy-attractive-young-man-with-stubble-posing-against-blank-blue-studio-wall_295783-4776.jpg"
             alt={user.name}
-            className={`${smallAvatar ? 'w-7 h-7' : 'w-10 h-10'} rounded-full border-2 border-gray-600`}
+            className={`${smallAvatar ? 'w-10 h-10' : 'w-10 h-10'} rounded-full border-2 border-gray-600`}
           />
           <ChevronDownIcon className="w-4 h-4 text-gray-400" />
         </motion.div>

@@ -45,7 +45,7 @@ const Reporting = () => {
           <h2 className="text-xl sm:text-2xl font-semibold text-white mb-2 font-primary">
             Reporting Panel
           </h2>
-          <p className="text-gray-400 text-sm sm:text-base">
+          <p className="text-white/50 text-sm sm:text-base">
             Track your income and analyse your financial performance
           </p>
         </div>
@@ -86,43 +86,44 @@ const Reporting = () => {
           <div className="flex flex-col lg:flex-row lg:items-center lg:justify-between gap-4">
             <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-2 sm:gap-4">
               {/* Filter Dropdowns */}
-              <select className="bg-gray-800/50 text-white px-3 sm:px-4 py-2 rounded-lg border border-gray-600/50 focus:border-purple-500 focus:outline-none hover:bg-gray-700/50 transition-all duration-200 cursor-pointer text-sm">
-                <option className="bg-gray-800 text-white">All Clients</option>
-                <option className="bg-gray-800 text-white">Active Clients</option>
-                <option className="bg-gray-800 text-white">Inactive Clients</option>
+              <select className="bg-[#202020] text-white/40 px-3 sm:px-4 py-2 rounded-lg border border-gray-600/50 focus:border-purple-500 focus:outline-none hover:bg-gray-700/50 transition-all duration-200 cursor-pointer text-sm">
+                <option className="bg-[#202020] text-white">All Clients</option>
+                <option className="bg-[#202020] text-white">Active Clients</option>
+                <option className="bg-[#202020] text-white">Inactive Clients</option>
               </select>
 
-              <select className="bg-gray-800/50 text-white px-3 sm:px-4 py-2 rounded-lg border border-gray-600/50 focus:border-purple-500 focus:outline-none hover:bg-gray-700/50 transition-all duration-200 cursor-pointer text-sm">
-                <option className="bg-gray-800 text-white">All Plans</option>
-                <option className="bg-gray-800 text-white">Free</option>
-                <option className="bg-gray-800 text-white">Pro</option>
-                <option className="bg-gray-800 text-white">Enterprise</option>
-                <option className="bg-gray-800 text-white">Lifetime</option>
+              <select className="bg-[#202020] text-white/40  px-3 sm:px-4 py-2 rounded-lg border border-gray-600/50 focus:border-purple-500 focus:outline-none hover:bg-gray-700/50 transition-all duration-200 cursor-pointer text-sm">
+                <option className="bg-[#202020] text-white">All Plans</option>
+                <option className="bg-[#202020] text-white">Free</option>
+                <option className="bg-[#202020] text-white">Pro</option>
+                <option className="bg-[#202020] text-white">Enterprise</option>
+                <option className="bg-[#202020] text-white">Lifetime</option>
               </select>
 
               {/* Date Range Filters */}
               <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-2">
                 <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-2">
                   <div className="relative">
+                  <CalendarIcon className="w-3 h-3 sm:w-4 sm:h-4 absolute left-2 sm:left-3 top-1/2 transform -translate-y-1/2 text-white/40 pointer-events-none" />
                     <input
                       type="date"
-                      className="bg-gray-800/50 text-white px-3 sm:px-4 py-2 pl-8 sm:pl-10 rounded-lg border border-gray-600/50 focus:border-purple-500 focus:outline-none hover:bg-gray-700/50 transition-all duration-200 w-full sm:w-36 text-sm [color-scheme:dark]"
+                      className="bg-[#202020] text-white/40 px-3 sm:px-4 py-2 pl-8 sm:pl-10 rounded-lg border border-gray-600/50 focus:border-purple-500 focus:outline-none hover:bg-gray-700/50 transition-all duration-200 w-full sm:w-36 text-sm [color-scheme:dark]"
                       style={{
                         colorScheme: 'dark'
                       }}
                     />
-                    <CalendarIcon className="w-3 h-3 sm:w-4 sm:h-4 absolute left-2 sm:left-3 top-1/2 transform -translate-y-1/2 text-gray-400 pointer-events-none" />
+                    
                   </div>
 
                   <div className="relative">
                     <input
                       type="date"
-                      className="bg-gray-800/50 text-white px-3 sm:px-4 py-2 pl-8 sm:pl-10 rounded-lg border border-gray-600/50 focus:border-purple-500 focus:outline-none hover:bg-gray-700/50 transition-all duration-200 w-full sm:w-36 text-sm [color-scheme:dark]"
+                      className="bg-[#202020] text-white/40 px-3 sm:px-4 py-2 pl-8 sm:pl-10 rounded-lg border border-gray-600/50 focus:border-purple-500 focus:outline-none hover:bg-gray-700/50 transition-all duration-200 w-full sm:w-36 text-sm [color-scheme:dark]"
                       style={{
                         colorScheme: 'dark'
                       }}
                     />
-                    <CalendarIcon className="w-3 h-3 sm:w-4 sm:h-4 absolute left-2 sm:left-3 top-1/2 transform -translate-y-1/2 text-gray-400 pointer-events-none" />
+                    <CalendarIcon className="w-3 h-3 sm:w-4 sm:h-4 absolute left-2 sm:left-3 top-1/2 transform -translate-y-1/2 text-white/40  pointer-events-none" />
                   </div>
                 </div>
               </div>
@@ -132,7 +133,7 @@ const Reporting = () => {
             <div className="flex items-center gap-2 sm:gap-3">
               <motion.button
                 onClick={() => setExportModalOpen(true)}
-                className="flex items-center gap-1 sm:gap-2 px-3 sm:px-4 py-2 bg-gray-800/50 hover:bg-gray-700/50 text-white rounded-lg border border-gray-600/50 hover:border-gray-500/50 transition-all duration-200 text-xs sm:text-sm"
+                className="flex items-center gap-1 sm:gap-2 px-3 sm:px-4 py-2 bg-[#202020] text-white/40 hover:bg-gray-700/50 rounded-lg border border-gray-600/50 hover:border-gray-500/50 transition-all duration-200 text-xs sm:text-sm"
                 whileHover={{ scale: 1.02 }}
                 whileTap={{ scale: 0.98 }}
               >
@@ -141,12 +142,12 @@ const Reporting = () => {
               </motion.button>
 
               <motion.button 
-                className="flex items-center gap-1 sm:gap-2 px-3 sm:px-4 py-2 bg-gray-800/50 hover:bg-gray-700/50 text-white rounded-lg border border-gray-600/50 hover:border-gray-500/50 transition-all duration-200 text-xs sm:text-sm"
+                className="flex items-center gap-1 sm:gap-2 px-3 sm:px-4 py-2  hover:bg-gray-700/50  rounded-lg border border-gray-600/50 hover:border-gray-500/50 transition-all duration-200 text-xs sm:text-sm btn-primary"
                 whileHover={{ scale: 1.02 }}
                 whileTap={{ scale: 0.98 }}
               >
-                <DocumentArrowDownIcon className="w-3 h-3 sm:w-4 sm:h-4" />
-                <span className=" sm:inline">Export PDF</span>
+                <DocumentArrowDownIcon className="w-3 h-3 sm:w-4 sm:h-4 " />
+                <span className=" sm:inline ">Export PDF</span>
               </motion.button>
             </div>
           </div>

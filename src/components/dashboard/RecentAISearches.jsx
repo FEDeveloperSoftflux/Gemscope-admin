@@ -70,7 +70,7 @@ const RecentAISearches = () => {
       className="data-table"
     >
       <div className="flex items-center justify-between mb-6">
-        <h3 className="text-xl font-semibold text-white">Recent AI Prompt Searches</h3>
+        <h3 className="sm:text-xl text-lg font-semibold text-white">Recent AI Prompt Searches</h3>
         <button className="btn-view-all">
           <img 
             src={viewIcon}

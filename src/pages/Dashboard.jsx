@@ -39,15 +39,15 @@ const Dashboard = () => {
             <h2 className="text-xl sm:text-2xl font-semibold text-white mb-2 font-primary">
               Welcome back!
             </h2>
-            <p className="text-gray-400 text-sm sm:text-base">
+            <p className="text-white/50 text-sm sm:text-base">
               Here's what's happening with your platform today.
             </p>
           </div>
           <div className="flex gap-2">
-            <button className="toggle-button active text-xs px-2 sm:px-3 py-1 sm:py-1.5">
+            <button className="toggle-button active text-sm px-2 sm:px-3 py-1 sm:py-1.5">
               Monthly
             </button>
-            <button className="toggle-button text-xs px-2 sm:px-3 py-1 sm:py-1.5 font-medium">
+            <button className="toggle-button text-sm px-2 sm:px-3 py-1 sm:py-1.5 font-semibold">
               Yearly
             </button>
           </div>

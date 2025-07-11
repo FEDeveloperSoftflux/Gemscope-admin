@@ -46,7 +46,7 @@ const Settings = () => {
           <h2 className="text-2xl font-semibold text-white mb-2 font-primary">
             Account Settings
           </h2>
-          <p className="text-gray-400">
+          <p className="text-white/50">
             Manage your account preferences and notification settings
           </p>
         </div>
@@ -105,7 +105,7 @@ const Settings = () => {
                       name="name"
                       value={formData.name}
                       onChange={handleInputChange}
-                      className="w-full px-4 py-3 bg-gray-900 text-white border border-gray-700 rounded-lg focus:border-purple-500 focus:outline-none pr-12"
+                      className="w-full px-4 py-3 bg-black text-white border border-gray-700 rounded-lg focus:border-purple-500  focus:outline-none pr-12"
                     />
                     <button className="absolute right-3 top-1/2 transform -translate-y-1/2 text-gray-400 hover:text-white">
                       <PencilIcon className="w-4 h-4" />
@@ -124,7 +124,7 @@ const Settings = () => {
                       name="email"
                       value={formData.email}
                       onChange={handleInputChange}
-                      className="w-full px-4 py-3 bg-gray-900 text-white border border-gray-700 rounded-lg focus:border-purple-500 focus:outline-none pr-12"
+                      className="w-full px-4 py-3 bg-black text-white border border-gray-700 rounded-lg focus:border-purple-500 focus:outline-none pr-12"
                     />
                     <button className="absolute right-3 top-1/2 transform -translate-y-1/2 text-gray-400 hover:text-white">
                       <PencilIcon className="w-4 h-4" />
@@ -236,7 +236,7 @@ const Settings = () => {
               </p>
 
               <div className="space-y-6">
-                <div className="flex items-center justify-between p-4 bg-gray-800/50 rounded-lg">
+                <div className="flex items-center justify-between p-4 bg-[#202020]rounded-lg">
                   <div>
                     <div className="text-white font-medium">Email Alerts</div>
                     <div className="text-gray-400 text-sm">Receive important notifications via email</div>
@@ -247,7 +247,7 @@ const Settings = () => {
                   </label>
                 </div>
 
-                <div className="flex items-center justify-between p-4 bg-gray-800/50 rounded-lg">
+                <div className="flex items-center justify-between p-4 bg-[#202020] rounded-lg">
                   <div>
                     <div className="text-white font-medium">Subscription Plan Notices</div>
                     <div className="text-gray-400 text-sm">Get Notified when a customer upgrades or downgrades their subscription</div>
@@ -258,7 +258,7 @@ const Settings = () => {
                   </label>
                 </div>
 
-                <div className="flex items-center justify-between p-4 bg-gray-800/50 rounded-lg">
+                <div className="flex items-center justify-between p-4 bg-[#202020]rounded-lg">
                   <div>
                     <div className="text-white font-medium">User Signup Notices</div>
                     <div className="text-gray-400 text-sm">Receive notifications when new users sign up</div>
@@ -269,9 +269,12 @@ const Settings = () => {
                   </label>
                 </div>
 
-                <button className="btn-primary">
-                  Save Notification Settings
-                </button>
+                {/* Move the button into a flex container for right alignment */}
+                <div className="flex justify-end mt-8">
+                  <button className="btn-primary">
+                    Save Notification Settings
+                  </button>
+                </div>
               </div>
             </div>
           )}

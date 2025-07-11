@@ -124,21 +124,29 @@ const EarningsChart = () => {
       transition={{ duration: 0.5, delay: 0.2 }}
       className="chart-container"
     >
-      <div className="flex items-center justify-between mb-6">
+    <div className="flex items-center justify-between mb-6">
         <h3 className="text-xl font-semibold text-white font-primary">
           Earnings Overview
         </h3>
-        <select
-          value={timeRange}
-          onChange={(e) => setTimeRange(e.target.value)}
-          className="bg-gray-800 text-white px-4 py-2 rounded-lg border border-gray-700 focus:border-purple-500 focus:outline-none text-sm"
-        >
-          <option>1 Month</option>
-          <option>3 Months</option>
-          <option>6 Months</option>
-          <option>1 Year</option>
-        </select>
-      </div>
+        <div className="relative">
+          <select
+            value={timeRange}
+            onChange={(e) => setTimeRange(e.target.value)}
+            className="bg-black text-white px-4 py-2 pr-8 rounded-lg focus:outline-none text-sm appearance-none cursor-pointer"
+          >
+            <option>1 Month</option>
+            <option>3 Months</option>
+            <option>6 Months</option>
+            <option>1 Year</option>
+          </select>
+          <div className="absolute inset-y-0 right-2 flex items-center pointer-events-none">
+            <svg className="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+            </svg>
+          </div>
+        </div>
+  </div>
+      
 
       <div style={{ height: "300px" }}>
         <Line data={data} options={options} />

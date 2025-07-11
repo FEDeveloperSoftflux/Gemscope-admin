@@ -36,7 +36,7 @@ const Header = ({ pageTitle = "Dashboard", onMenuToggle }) => {
               className="w-3 h-3 sm:w-4 sm:h-4 lg:w-5 lg:h-5"
             />
           </div>
-          <h1 className="text-base sm:text-lg lg:text-xl font-primary font-semibold text-white">
+          <h1 className="text-base sm:text-xl lg:text-xl font-primary font-semibold text-white">
             {pageTitle}
           </h1>
         </div>

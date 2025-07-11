@@ -16,12 +16,18 @@ import ChangePasswordModal from '../ui/ChangePasswordModal';
 import UpgradeSubscriptionModal from '../ui/UpgradeSubscriptionModal';
 import addIcon from '../../assets/icons/add.svg';
 import crownIcon from '../../assets/icons/crown.svg';
+// Remove import ControlSection from './ControlSection';
 
-const CustomerTable = () => {
-  const [searchTerm, setSearchTerm] = useState('');
-  const [statusFilter, setStatusFilter] = useState('All Status');
-  const [selectAll, setSelectAll] = useState(false);
-  const [selectedRows, setSelectedRows] = useState([]);
+const CustomerTable = ({
+  searchTerm,
+  setSearchTerm,
+  selectAll,
+  setSelectAll,
+  selectedRows,
+  setSelectedRows,
+  statusFilter,
+  setStatusFilter
+}) => {
   const [isAddUserModalOpen, setIsAddUserModalOpen] = useState(false);
   const [users, setUsers] = useState([]);
   const [successModal, setSuccessModal] = useState({
@@ -243,106 +249,18 @@ const CustomerTable = () => {
       transition={{ duration: 0.5, delay: 0.2 }}
       className="data-table"
     >
-      {/* Controls Section */}
-      <div className="mb-6 space-y-4">
-        {/* First Row - Search and Select All */}
-        <div className="flex items-center gap-4">
-          {/* Search Input */}
-          <div className="relative">
-            <MagnifyingGlassIcon className="w-5 h-5 absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400" />
-            <input
-              type="text"
-              placeholder="Search"
-              value={searchTerm}
-              onChange={(e) => setSearchTerm(e.target.value)}
-              className="bg-black text-white pl-10 pr-4 py-2 rounded-lg border border-gray-600 focus:border-white focus:outline-none w-64 placeholder-gray-400"
-            />
-          </div>
-
-          {/* Select All Checkbox */}
-          <label className="flex items-center gap-2 text-gray-400 cursor-pointer">
-            <input
-              type="checkbox"
-              checked={selectAll}
-              onChange={handleSelectAll}
-              className="w-4 h-4 text-purple-600 bg-gray-800 border-gray-700 rounded focus:ring-purple-500"
-            />
-            Select All
-          </label>
-        </div>
-
-        {/* Second Row - Action Buttons */}
-        <div className="flex items-center justify-between gap-3">
-          <div className="flex items-center gap-3">
-            {/* Delete Button - shown when items are selected */}
-            {(selectAll || selectedRows.length > 0) && (
-              <motion.button
-                initial={{ opacity: 0, scale: 0.8 }}
-                animate={{ opacity: 1, scale: 1 }}
-                exit={{ opacity: 0, scale: 0.8 }}
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
-                className="flex items-center gap-2 px-4 py-2 bg-red-600/20 border border-red-600/30 text-red-400 rounded-lg hover:bg-red-600/30 transition-colors"
-                onClick={() => {
-                  setConfirmationModal({
-                    isOpen: true,
-                    title: 'Delete Selected Users',
-                    message: `Are you sure you want to delete ${selectedRows.length} selected user(s)?`,
-                    onConfirm: () => {
-                      console.log('Deleting selected users:', selectedRows);
-                      setSelectedRows([]);
-                      setSelectAll(false);
-                      setSuccessModal({
-                        isOpen: true,
-                        title: 'Users Deleted',
-                        message: `${selectedRows.length} user(s) have been deleted successfully.`
-                      });
-                    }
-                  });
-                }}
-              >
-                <TrashIcon className="w-4 h-4" />
-                Delete ({selectedRows.length})
-              </motion.button>
-            )}
-
-            {/* Status Filter */}
-            <select
-              value={statusFilter}
-              onChange={(e) => setStatusFilter(e.target.value)}
-              className="bg-gray-800/50 text-white px-4 py-2 rounded-lg border border-gray-600/50 focus:border-purple-500 focus:outline-none hover:bg-gray-700/50 transition-all duration-200 cursor-pointer min-w-[120px]"
-            >
-              <option className="bg-gray-800 text-white">All Status</option>
-              <option className="bg-gray-800 text-white">Active</option>
-              <option className="bg-gray-800 text-white">Cancelled</option>
-            </select>
-          </div>
-
-          {/* Add User Button */}
-          <motion.button 
-            onClick={() => setIsAddUserModalOpen(true)}
-            className="btn-primary flex items-center gap-2 shadow-lg hover:shadow-xl"
-            whileHover={{ scale: 1.02, y: -2 }}
-            whileTap={{ scale: 0.98 }}
-          >
-            <img src={addIcon} alt="Add" className="w-5 h-5 filter brightness-0" />
-            Add User
-          </motion.button>
-        </div>
-      </div>
-
       {/* Table */}
       <div className="overflow-x-auto">
         <table className="w-full">
-          <thead>
-            <tr className="border-b border-gray-700">
-              <th className="text-left py-4 px-4 text-gray-400 font-medium">Customer</th>
-              <th className="text-left py-4 px-4 text-gray-400 font-medium">Personal Details</th>
-              <th className="text-left py-4 px-4 text-gray-400 font-medium">Status</th>
-              <th className="text-left py-4 px-4 text-gray-400 font-medium">Subscription Plan</th>
-              <th className="text-left py-4 px-4 text-gray-400 font-medium">Actions</th>
-            </tr>
-          </thead>
+        <thead>
+  <tr className=" bg-black rounded-lg">
+    <th className="text-left py-4 px-4 text-gray-400 font-medium rounded-l-2xl">Customer</th>
+    <th className="text-left py-4 px-4 text-gray-400 font-medium">Personal Details</th>
+    <th className="text-left py-4 px-4 text-gray-400 font-medium">Status</th>
+    <th className="text-left py-4 px-4 text-gray-400 font-medium">Subscription Plan</th>
+    <th className="text-left py-4 px-4 text-gray-400 font-medium rounded-r-2xl">Actions</th>
+  </tr>
+</thead>
           <tbody>
             {customers.map((customer, index) => (
               <motion.tr

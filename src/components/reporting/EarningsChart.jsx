@@ -131,7 +131,7 @@ const EarningsChart = () => {
         <select
           value={timeRange}
           onChange={(e) => setTimeRange(e.target.value)}
-          className="bg-gray-800 text-white px-4 py-2 rounded-lg border border-gray-700 focus:border-purple-500 focus:outline-none text-sm"
+          className="bg-black text-white px-4 py-2 pr-2 pl-2 rounded-lg focus:outline-none text-sm "
         >
           <option>1 Month</option>
           <option>3 Months</option>
