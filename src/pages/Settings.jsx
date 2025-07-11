@@ -58,7 +58,7 @@ const Settings = () => {
               <motion.button
                 key={tab}
                 onClick={() => setActiveTab(tab)}
-                className={`px-6 py-3 rounded-lg font-medium transition-all duration-300 flex-1 text-center ${
+                className={`px-3 py-2 text-sm sm:px-4 sm:py-2.5 sm:text-base md:px-6 md:py-3 md:text-lg rounded-lg font-medium transition-all duration-300 flex-1 text-center ${
                   activeTab === tab
                     ? 'text-black font-semibold'
                     : 'text-gray-400 hover:text-white'

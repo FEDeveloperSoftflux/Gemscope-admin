@@ -81,9 +81,9 @@ const Reporting = () => {
         </div>
 
         {/* Controls Section */}
-        <div className="mb-6 space-y-4">
-          {/* First Row - Filter Dropdowns and Export Buttons */}
-          <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
+        <div className="mb-6">
+          {/* Single Row - All Filters and Export Buttons */}
+          <div className="flex flex-col lg:flex-row lg:items-center lg:justify-between gap-4">
             <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-2 sm:gap-4">
               {/* Filter Dropdowns */}
               <select className="bg-gray-800/50 text-white px-3 sm:px-4 py-2 rounded-lg border border-gray-600/50 focus:border-purple-500 focus:outline-none hover:bg-gray-700/50 transition-all duration-200 cursor-pointer text-sm">
@@ -99,6 +99,33 @@ const Reporting = () => {
                 <option className="bg-gray-800 text-white">Enterprise</option>
                 <option className="bg-gray-800 text-white">Lifetime</option>
               </select>
+
+              {/* Date Range Filters */}
+              <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-2">
+                <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-2">
+                  <div className="relative">
+                    <input
+                      type="date"
+                      className="bg-gray-800/50 text-white px-3 sm:px-4 py-2 pl-8 sm:pl-10 rounded-lg border border-gray-600/50 focus:border-purple-500 focus:outline-none hover:bg-gray-700/50 transition-all duration-200 w-full sm:w-36 text-sm [color-scheme:dark]"
+                      style={{
+                        colorScheme: 'dark'
+                      }}
+                    />
+                    <CalendarIcon className="w-3 h-3 sm:w-4 sm:h-4 absolute left-2 sm:left-3 top-1/2 transform -translate-y-1/2 text-gray-400 pointer-events-none" />
+                  </div>
+
+                  <div className="relative">
+                    <input
+                      type="date"
+                      className="bg-gray-800/50 text-white px-3 sm:px-4 py-2 pl-8 sm:pl-10 rounded-lg border border-gray-600/50 focus:border-purple-500 focus:outline-none hover:bg-gray-700/50 transition-all duration-200 w-full sm:w-36 text-sm [color-scheme:dark]"
+                      style={{
+                        colorScheme: 'dark'
+                      }}
+                    />
+                    <CalendarIcon className="w-3 h-3 sm:w-4 sm:h-4 absolute left-2 sm:left-3 top-1/2 transform -translate-y-1/2 text-gray-400 pointer-events-none" />
+                  </div>
+                </div>
+              </div>
             </div>
 
             {/* Export Buttons */}
@@ -110,8 +137,7 @@ const Reporting = () => {
                 whileTap={{ scale: 0.98 }}
               >
                 <DocumentArrowDownIcon className="w-3 h-3 sm:w-4 sm:h-4" />
-                <span className="hidden sm:inline">Export CSV</span>
-                <span className="sm:hidden">CSV</span>
+                <span className=" sm:inline">Export CSV</span>
               </motion.button>
 
               <motion.button 
@@ -120,39 +146,8 @@ const Reporting = () => {
                 whileTap={{ scale: 0.98 }}
               >
                 <DocumentArrowDownIcon className="w-3 h-3 sm:w-4 sm:h-4" />
-                <span className="hidden sm:inline">Export PDF</span>
-                <span className="sm:hidden">PDF</span>
+                <span className=" sm:inline">Export PDF</span>
               </motion.button>
-            </div>
-          </div>
-
-          {/* Second Row - Date Filters */}
-          <div className="flex flex-col sm:flex-row sm:items-center gap-3 sm:gap-4">
-            <span className="text-gray-400 text-sm font-medium">Date Range:</span>
-            <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-2">
-              <div className="relative">
-                <input
-                  type="date"
-                  className="bg-gray-800/50 text-white px-3 sm:px-4 py-2 pl-8 sm:pl-10 rounded-lg border border-gray-600/50 focus:border-purple-500 focus:outline-none hover:bg-gray-700/50 transition-all duration-200 w-full sm:w-36 text-sm [color-scheme:dark]"
-                  style={{
-                    colorScheme: 'dark'
-                  }}
-                />
-                <CalendarIcon className="w-3 h-3 sm:w-4 sm:h-4 absolute left-2 sm:left-3 top-1/2 transform -translate-y-1/2 text-gray-400 pointer-events-none" />
-              </div>
-
-              <span className="text-gray-400 text-center sm:text-left text-sm">to</span>
-
-              <div className="relative">
-                <input
-                  type="date"
-                  className="bg-gray-800/50 text-white px-3 sm:px-4 py-2 pl-8 sm:pl-10 rounded-lg border border-gray-600/50 focus:border-purple-500 focus:outline-none hover:bg-gray-700/50 transition-all duration-200 w-full sm:w-36 text-sm [color-scheme:dark]"
-                  style={{
-                    colorScheme: 'dark'
-                  }}
-                />
-                <CalendarIcon className="w-3 h-3 sm:w-4 sm:h-4 absolute left-2 sm:left-3 top-1/2 transform -translate-y-1/2 text-gray-400 pointer-events-none" />
-              </div>
             </div>
           </div>
         </div>

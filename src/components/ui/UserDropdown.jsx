@@ -8,7 +8,7 @@ import {
 } from '@heroicons/react/24/outline';
 import Dropdown from './Dropdown';
 
-const UserDropdown = ({ user }) => {
+const UserDropdown = ({ user, smallAvatar }) => {
   const handleAction = (actionType) => {
     console.log(`User action: ${actionType}`);
     // Implement actual actions here
@@ -41,16 +41,16 @@ const UserDropdown = ({ user }) => {
       trigger={
         <motion.div
           whileHover={{ scale: 1.02 }}
-          className="flex items-center gap-3 cursor-pointer p-2 rounded-lg hover:bg-gray-700/50 transition-colors"
+          className={`flex items-center ${smallAvatar ? 'gap-1 p-1' : 'gap-3 p-2'} cursor-pointer rounded-lg hover:bg-gray-700/50 transition-colors`}
         >
           <div className="flex flex-col items-end">
-            <p className="font-semibold text-white text-sm">{user.name}</p>
-            <p className="text-xs text-gray-400">{user.email}</p>
+            <p className={`font-semibold text-white ${smallAvatar ? 'text-xs' : 'text-sm'}`}>{user.name}</p>
+            <p className={`${smallAvatar ? 'text-[10px]' : 'text-xs'} text-gray-400`}>{user.email}</p>
           </div>
           <img
             src="https://img.freepik.com/free-photo/look-there-happy-attractive-young-man-with-stubble-posing-against-blank-blue-studio-wall_295783-4776.jpg"
             alt={user.name}
-            className="w-10 h-10 rounded-full border-2 border-gray-600"
+            className={`${smallAvatar ? 'w-7 h-7' : 'w-10 h-10'} rounded-full border-2 border-gray-600`}
           />
           <ChevronDownIcon className="w-4 h-4 text-gray-400" />
         </motion.div>
